@@ -35,3 +35,5 @@
 [Открыть инструкции скилла](../../skills/life-events/SKILL.md) · [Вымышленный пример в технической справке, на английском](../../skills/life-events/references/example.md)
 
 [Каталог](../catalog.ru.md) · [К Skills for Selfdev](../../README.ru.md)
+
+[Место в личной системе](../system-map.ru.md)

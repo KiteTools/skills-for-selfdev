@@ -36,3 +36,11 @@ A plain diary works; Computer History is optional. The skill consumes summaries 
 **Release status:** portable on-demand instruction package. The source workflow delivered its report at 22:00, but this package does not install a schedule, collect activity, or connect to a messaging service. Those integrations need separate setup, a timezone, and user authorization. Repetition checks require earlier lists; without them the skill declares that limitation.
 
 [Open the skill](../../skills/evening-ten/SKILL.md) · [Fictional input and output excerpt](../../examples/evening-ten/example.md) · [Back to the collection](../../README.md)
+
+[Place in the personal system](../system-map.md)
+
+## If you want a daily rhythm
+
+[Personal Daily Assistant](personal-daily-assistant.md) can store a prepared Ten and separately record interest, choice, attempts and reported outcomes. Ask this skill for a Personal Daily Assistant 0.2 export using the [handoff contract](../../skills/evening-ten/references/daily-assistant-export.md). Preparation includes a quality review by a person or agent; it does not require manual approval of every evening message. The owner separately chooses whether to activate a schedule.
+
+This is an optional path. Standalone Evening Ten still works with ordinary notes in a conversation. The delivery runtime does not collect the day’s material or generate suggestions in place of the skill.

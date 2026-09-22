@@ -35,3 +35,5 @@ Save the timeline privately. You can use it to prepare a consultation or continu
 [Open the skill](../../skills/life-events/SKILL.md) · [Fictional example](../../skills/life-events/references/example.md)
 
 [Back to Skills for Selfdev](../../README.md)
+
+[Place in the personal system](../system-map.md)

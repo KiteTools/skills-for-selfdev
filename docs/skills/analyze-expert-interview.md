@@ -50,3 +50,5 @@ python3 -m unittest discover -s skills/analyze-expert-interview/tests -v
 Use a new output path if those temporary files already exist. The remaining semantic passes need the assistant to read the transcript; running these two commands alone does not produce a reviewed analysis.
 
 [Back to Skills for Selfdev](../../README.md)
+
+[Place in the personal system](../system-map.md)

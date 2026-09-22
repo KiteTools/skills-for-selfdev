@@ -37,3 +37,5 @@ Source verified on 2026-09-22 against the app's [README](https://github.com/Kite
 [Open the skill](../../skills/longevity-intake/SKILL.md) · [Application source](https://github.com/KiteTools/longevity-webmcp) · [Prepare a life timeline](life-events.md)
 
 [Back to Skills for Selfdev](../../README.md)
+
+[Place in the personal system](../system-map.md)

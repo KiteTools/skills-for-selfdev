@@ -31,3 +31,5 @@ Better spacing can help reading; changing a crossing into a connection changes t
 This is a vector reconstruction workflow. It does not include Prism or claim to reproduce measured data from a rough sketch.
 
 [Back to Skills for Selfdev](../../README.md)
+
+[Place in the personal system](../system-map.md)

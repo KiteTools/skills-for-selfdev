@@ -121,9 +121,13 @@ def verify_installation(
         declarations = json.loads(schedule_path.read_text(encoding="utf-8"))
         schedules = declarations.get("schedules") or []
         keys = [item.get("declaration_key") for item in schedules]
+        expected = set(EXPECTED_KEYS)
+        if declarations.get("features", {}).get("evening_ten") is True:
+            expected.remove("personal-daily-evening-2200")
+            expected.update({"personal-daily-ten-2200", "personal-daily-evening-2210"})
         check(
             "schedule_declarations",
-            len(keys) == 7 and len(set(keys)) == 7 and set(keys) == EXPECTED_KEYS,
+            len(keys) == len(expected) and len(set(keys)) == len(expected) and set(keys) == expected,
             f"keys={keys}",
         )
 

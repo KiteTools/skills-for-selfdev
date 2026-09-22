@@ -47,6 +47,11 @@
       "pythonBin": {
         "type": "string",
         "default": "python3"
+      },
+      "eveningTenEnabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Opt in to routing explicit Evening Ten feedback; prepared input and separate schedule required."
       }
     }
   }

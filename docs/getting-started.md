@@ -4,6 +4,16 @@
 
 Pick a skill from the [catalog](catalog.md). Read its input, output, and requirements before bringing personal material.
 
+## If you want a personal assistant
+
+Start with the [system map](system-map.md). Install `personal-codex-assistant` for personal context and working agreements. Add `evening-ten` and `weekly-review` when you want those practices. GoR has its own `reflect-on-reaction` skill.
+
+```sh
+python3 scripts/install.py personal-codex-assistant evening-ten weekly-review
+```
+
+`personal-daily-assistant` is an optional next layer with a runtime and service connections. Copying the skill does not install that runtime or activate Telegram. Its [guide](skills/personal-daily-assistant.md) explains updating an existing assistant.
+
 ## Install a standalone skill
 
 Requirements: Git and Python 3.10 or newer for the installer. Your AI assistant must support skills or accept the selected instructions as a file.

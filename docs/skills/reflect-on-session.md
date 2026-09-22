@@ -38,3 +38,5 @@ Use only transcripts you are entitled to process. The skill does not upload them
 **Release status:** portable workflow and original output guides. The public adaptation preserves source attribution, client choice, accumulated context, and the optional visual sequence. No recording connector, image generator, or external synchronization is bundled. End-to-end output depends on the chosen assistant and tools.
 
 [Open the skill](../../skills/reflect-on-session/SKILL.md) · [Fictional worked example](../../examples/reflect-on-session/example.md) · [Back to the collection](../../README.md)
+
+[Place in the personal system](../system-map.md)

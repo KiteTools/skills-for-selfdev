@@ -31,6 +31,7 @@ class InstallOptions(NamedTuple):
     token_file: Path
     thread_cleanup_cutoff: str
     python_bin: str = "python3"
+    evening_ten_enabled: bool = False
 
 
 def _absolute(path: Path, label: str) -> Path:
@@ -96,7 +97,20 @@ def validate_context(context: dict) -> None:
         raise ValueError("every task must reference a known focus group")
 
 
+def _reject_data_symlinks(root: Path) -> None:
+    root = root.expanduser()
+    if root.is_symlink():
+        raise ValueError("private data root must not be a symlink")
+    if root.exists():
+        if not root.is_dir(): raise ValueError("private data root must be a directory")
+        for directory, dirs, files in os.walk(root, followlinks=False):
+            for name in dirs + files:
+                if (Path(directory) / name).is_symlink():
+                    raise ValueError("private data descendants must not be symlinks")
+
+
 def _load_and_validate(options: InstallOptions) -> dict:
+    _reject_data_symlinks(options.data_dir)
     ZoneInfo(options.timezone)
     if not options.owner_telegram_id.isdigit() or not options.telegram_target.isdigit():
         raise ValueError("Telegram owner ID and target must be numeric")
@@ -161,8 +175,18 @@ def build_plan(options: InstallOptions) -> dict:
         _schedule(options, "personal-daily-evening-2200", "0 22 * * *", "evening"),
         _schedule(options, "personal-daily-weekly-sun-2000", "0 20 * * 0", "weekly"),
     ]
+    if options.evening_ten_enabled:
+        schedules = [item for item in schedules if item["declaration_key"] != "personal-daily-evening-2200"]
+        schedules.extend([
+            _schedule(options, "personal-daily-ten-2200", "0 22 * * *", "ten"),
+            _schedule(options, "personal-daily-evening-2210", "10 22 * * *", "evening"),
+        ])
+        for item in schedules:
+            item["env"]["PDS_EVENING_TEN_ENABLED"] = "1"
     return {
         "schema_version": 1,
+        "package_version": "0.2.0",
+        "features": {"evening_ten": options.evening_ten_enabled},
         "mode": "dry-run",
         "project_root": str(project),
         "private_data_dir": str(data),
@@ -175,6 +199,7 @@ def build_plan(options: InstallOptions) -> dict:
             "config": {
                 "ownerTelegramId": options.owner_telegram_id,
                 "technicalCleanupEnabled": False,
+                "eveningTenEnabled": options.evening_ten_enabled,
                 "repoRoot": str(project),
                 "dataDir": str(data),
                 "timezone": options.timezone,
@@ -240,8 +265,19 @@ def _render_context_markdown(context: dict) -> str:
 
 
 def _write_private(path: Path, content: str) -> None:
-    path.write_text(content, encoding="utf-8")
-    path.chmod(0o600)
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0), 0o600)
+    with os.fdopen(fd, "w", encoding="utf-8") as handle:
+        handle.write(content)
+
+
+def _private_existing(path: Path, *, directory: bool = False) -> None:
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
+    if directory: flags |= getattr(os, "O_DIRECTORY", 0)
+    fd = os.open(path, flags)
+    try:
+        if not directory and not stat.S_ISREG(os.fstat(fd).st_mode): raise ValueError("Private state must be a regular file")
+        os.fchmod(fd, 0o700 if directory else 0o600)
+    finally: os.close(fd)
 
 
 def apply_install(options: InstallOptions, plan: dict | None = None) -> dict:
@@ -256,12 +292,13 @@ def apply_install(options: InstallOptions, plan: dict | None = None) -> dict:
 
     # Reserve the fresh destination before any private-data or runtime writes.
     # exist_ok=False also refuses a destination created after the validation.
-    project.mkdir(parents=True, exist_ok=False)
+    project.mkdir(parents=True, exist_ok=False, mode=0o700)
+    project.chmod(0o700)
     for directory in (project / "context", project / "setup", data, data / "reports", data / "views", summaries):
         directory.mkdir(parents=True, exist_ok=True)
-    data.chmod(0o700)
-    (data / "reports").chmod(0o700)
-    (data / "views").chmod(0o700)
+    _private_existing(data, directory=True)
+    _private_existing(data / "reports", directory=True)
+    _private_existing(data / "views", directory=True)
 
     shutil.copytree(RUNTIME_ROOT / "scripts", project / "scripts")
     shutil.copytree(RUNTIME_ROOT / "tests", project / "tests")
@@ -276,6 +313,8 @@ def apply_install(options: InstallOptions, plan: dict | None = None) -> dict:
     (project / "context" / "active_context.md").write_text(
         _render_context_markdown(context), encoding="utf-8"
     )
+    for private_context in (project / "context").iterdir():
+        private_context.chmod(0o600)
     for path, content in (
         (data / "events.jsonl", ""),
         (data / "state.json", "{}\n"),
@@ -283,7 +322,7 @@ def apply_install(options: InstallOptions, plan: dict | None = None) -> dict:
         if not path.exists():
             _write_private(path, content)
         else:
-            path.chmod(0o600)
+            _private_existing(path)
 
     plugin_fragment = {
         "plugins": {
@@ -302,7 +341,7 @@ def apply_install(options: InstallOptions, plan: dict | None = None) -> dict:
     )
     (project / "setup" / "schedule-declarations.json").write_text(
         json.dumps(
-            {"schema_version": 1, "schedules": plan["schedules"]},
+            {"schema_version": 1, "features": plan["features"], "schedules": plan["schedules"]},
             ensure_ascii=False,
             indent=2,
         )
@@ -328,6 +367,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--token-file", type=Path, required=True)
     parser.add_argument("--thread-cleanup-cutoff", required=True)
     parser.add_argument("--python-bin", default="python3")
+    parser.add_argument("--enable-evening-ten", action="store_true")
     parser.add_argument("--apply", action="store_true")
     return parser
 
@@ -347,6 +387,7 @@ def main(argv: list[str] | None = None) -> int:
         token_file=args.token_file,
         thread_cleanup_cutoff=args.thread_cleanup_cutoff,
         python_bin=args.python_bin,
+        evening_ten_enabled=args.enable_evening_ten,
     )
     plan = build_plan(options)
     result = apply_install(options, plan) if args.apply else plan

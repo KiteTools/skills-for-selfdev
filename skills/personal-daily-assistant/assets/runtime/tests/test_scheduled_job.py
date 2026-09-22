@@ -59,4 +59,21 @@ class ActivityOptInTests(unittest.TestCase):
         self.assertIn('--dry-run', dispatch)
 
 
+class EveningTenScheduleTests(unittest.TestCase):
+    def test_disabled_ten_never_calls_any_command(self):
+        module = load_scheduler()
+        with mock.patch.dict(os.environ, {'PDS_TELEGRAM_TARGET': 'synthetic'}, clear=True), mock.patch.object(module, '_run') as run:
+            with self.assertRaisesRegex(RuntimeError, 'disabled'): module.run_job('ten')
+            run.assert_not_called()
+
+    def test_enabled_ten_reads_prepared_store_only(self):
+        module = load_scheduler()
+        with mock.patch.dict(os.environ, {'PDS_TELEGRAM_TARGET': '123', 'PDS_EVENING_TEN_ENABLED': '1', 'PDS_INCLUDE_CODEX_ACTIVITY': '1'}, clear=True), mock.patch.object(module, '_run') as run:
+            module.run_job('ten', dry_run=True)
+            self.assertEqual(run.call_count, 1)
+            args = run.call_args.args[0]
+            self.assertTrue(args[1].endswith('evening_ten.py'))
+            self.assertIn('--dry-run', args)
+            self.assertNotIn('build_codex_activity_context.py', ' '.join(args))
+
 if __name__ == '__main__': unittest.main()

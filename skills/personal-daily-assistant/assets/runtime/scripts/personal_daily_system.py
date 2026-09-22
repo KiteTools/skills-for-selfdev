@@ -2793,9 +2793,9 @@ class PersonalDailyService:
             if event.get("type") != "idea":
                 continue
             links = event.get("links")
-            if isinstance(links, dict) and isinstance(
+            if isinstance(links, dict) and (isinstance(
                 links.get("focus_task_id"), str
-            ):
+            ) or links.get("idea_review")):
                 continue
             pending.append(event)
         pending.sort(key=lambda event: event["occurred_at"])
@@ -2811,13 +2811,25 @@ class PersonalDailyService:
         return [*today, *backlog[:1]]
 
     def _idea_followthrough_prompt(self, idea: dict[str, Any]) -> str:
-        title = self._idea_title(idea)
         return (
-            f"Идея: «{title}»\n"
-            "Первый шаг на 15–30 минут: зафиксируй короткую заметку — "
-            "какой результат хочешь получить и что сделаешь следующим.\n"
-            "Что получилось?"
+            f"Идея: «{self._idea_title(idea)}»\n"
+            "Если хочется: «обсудить», «оставить» без действия или «пропустить» на сегодня. "
+            "Можно не отвечать. Задача и обязательный первый шаг не создаются."
         )
+
+    def _record_optional_idea_review(self, idea, *, text, choice, message_id, now):
+        links = dict(idea.get("links", {}))
+        links["idea_review"] = choice
+        self.store.append_event({
+            "type": "correction", "idempotency_key": f"idea_review:{message_id}",
+            "occurred_at": now.isoformat(),
+            "source": {"channel": "telegram", "message_id": message_id},
+            "supersedes_event_id": idea["id"],
+            "corrected_fields": ["links", "self_report"],
+            "links": links,
+            "self_report": {**idea.get("self_report", {}), "idea_review": {"choice": choice, "text": text}},
+        })
+        render_reading_views(self.store.data_dir, self.store.load_materialized_events())
 
     @staticmethod
     def _idea_match_tokens(text: str) -> set[str]:
@@ -4231,27 +4243,10 @@ class PersonalDailyService:
                     "Ретро сохранено. Не обесценивай пройденное: если "
                     "хочется, добавь один сегодняшний успех."
                 )
-                candidates = self._ideas_for_evening(local_now)
-                ideas = []
-                for idea in candidates:
-                    existing_evidence = self._idea_existing_evidence(
-                        idea,
-                        now=local_now,
-                    )
-                    if existing_evidence is None:
-                        ideas.append(idea)
-                        continue
-                    self._promote_idea(
-                        idea,
-                        result_text=existing_evidence,
-                        source={
-                            "channel": "agent",
-                            "operation": "evening_idea_preflight",
-                        },
-                        now=local_now,
-                    )
+                # Discussion is optional. Text similarity never promotes an idea to a task.
+                ideas = self._ideas_for_evening(local_now)[:1]
                 if ideas:
-                    pending["stage"] = "awaiting_idea_result"
+                    pending["stage"] = "awaiting_idea_choice"
                     payload["idea_queue"] = [idea["id"] for idea in ideas]
                     payload["idea_index"] = 0
                     payload["ideas_completed"] = 0
@@ -4259,7 +4254,7 @@ class PersonalDailyService:
                     result = {
                         "status": "recorded",
                         "event": event,
-                        "next_stage": "awaiting_idea_result",
+                        "next_stage": "awaiting_idea_choice",
                         "text": f"{success_text}\n\n{idea_prompt}",
                         "buttons": [
                             self._button(
@@ -4305,7 +4300,8 @@ class PersonalDailyService:
                 success_text = (
                     "Успех сохранён. Это не мелочь — это часть твоего пути."
                 )
-                if payload.pop("resume_stage", None) == "awaiting_idea_result":
+                resume_stage = payload.pop("resume_stage", None)
+                if resume_stage in {"awaiting_idea_choice", "awaiting_idea_result"}:
                     queue = payload.get("idea_queue", [])
                     index = payload.get("idea_index", 0)
                     idea = (
@@ -4319,11 +4315,11 @@ class PersonalDailyService:
                         raise PersonalEventError(
                             "evening idea queue lost its current idea"
                         )
-                    pending["stage"] = "awaiting_idea_result"
+                    pending["stage"] = resume_stage
                     result = {
                         "status": "recorded",
                         "event": event,
-                        "next_stage": "awaiting_idea_result",
+                        "next_stage": resume_stage,
                         "text": (
                             f"{success_text}\n\n"
                             f"{self._idea_followthrough_prompt(idea)}"
@@ -4340,7 +4336,7 @@ class PersonalDailyService:
                     callback = state["callbacks"].get(callback_data)
                     if isinstance(callback, dict):
                         callback["result"] = copy.deepcopy(result)
-                if pending["stage"] != "awaiting_idea_result":
+                if pending["stage"] not in {"awaiting_idea_choice", "awaiting_idea_result"}:
                     self._mark_completed(
                         state,
                         interaction_id,
@@ -4349,92 +4345,28 @@ class PersonalDailyService:
                     state["pending_interaction"] = None
                 return self._remember_reply(state, message_id, result)
 
-            if stage == "awaiting_idea_result":
-                queue = payload.get("idea_queue")
-                index = payload.get("idea_index")
-                if (
-                    not isinstance(queue, list)
-                    or not isinstance(index, int)
-                    or not 0 <= index < len(queue)
-                ):
-                    raise PersonalEventError(
-                        "evening interaction has an invalid idea queue"
-                    )
-                idea = self._idea_by_id(queue[index])
+            if stage in {"awaiting_idea_choice", "awaiting_idea_result"}:
+                queue = payload.get("idea_queue", [])
+                index = payload.get("idea_index", 0)
+                idea = self._idea_by_id(queue[index]) if isinstance(index, int) and 0 <= index < len(queue) else None
                 if idea is None:
-                    raise PersonalEventError(
-                        "evening idea queue lost its current idea"
-                    )
-                if not self._idea_result_has_artifact(text):
-                    result = {
-                        "status": "waiting",
-                        "next_stage": "awaiting_idea_result",
-                        "text": (
-                            "Пока не вижу материального первого следа. "
-                            "Сделай один маленький результат сейчас.\n\n"
-                            f"{self._idea_followthrough_prompt(idea)}"
-                        ),
-                    }
+                    raise PersonalEventError("evening idea queue lost its current idea")
+                choice = text.strip().casefold()
+                if choice in {"оставить", "пропустить", "не сейчас"}:
+                    self._record_optional_idea_review(idea, text=text, choice=choice, message_id=message_id, now=local_now)
+                    result = {"status": "recorded", "text": "Идея остаётся в журнале. Ничего делать не требуется; задач и успехов не добавлено."}
+                elif stage == "awaiting_idea_choice":
+                    if choice != "обсудить":
+                        return {"status": "waiting", "text": self._idea_followthrough_prompt(idea)}
+                    pending["stage"] = "awaiting_idea_result"
+                    result = {"status": "recorded", "next_stage": "awaiting_idea_result", "text": "Что хочется уточнить или сохранить об этой идее? Можно ответить «оставить» или «пропустить». Материальный результат не обязателен."}
                     payload["last_response"] = copy.deepcopy(result)
                     return self._remember_reply(state, message_id, result)
-                promoted = self._promote_idea(
-                    idea,
-                    result_text=text,
-                    source={
-                        "channel": "telegram",
-                        "message_id": message_id,
-                    },
-                    now=local_now,
-                )
-                payload["ideas_completed"] = int(
-                    payload.get("ideas_completed", 0)
-                ) + 1
-                payload["idea_index"] = index + 1
-                if payload["idea_index"] < len(queue):
-                    next_idea = self._idea_by_id(queue[payload["idea_index"]])
-                    if next_idea is None:
-                        raise PersonalEventError(
-                            "evening idea queue lost its next idea"
-                        )
-                    if promoted["task"].get("status") == "completed":
-                        idea_result_text = (
-                            "Результат идеи зафиксирован; задача "
-                            f"{promoted['task']['number']} отмечена "
-                            "выполненной."
-                        )
-                    else:
-                        idea_result_text = (
-                            "Первичный шаг зафиксирован; задача "
-                            f"{promoted['task']['number']} добавлена."
-                        )
-                    result = {
-                        "status": "recorded",
-                        "task": promoted["task"],
-                        "next_stage": "awaiting_idea_result",
-                        "text": (
-                            f"{idea_result_text}\n\n"
-                            f"{self._idea_followthrough_prompt(next_idea)}"
-                        ),
-                    }
-                    payload["last_response"] = copy.deepcopy(result)
-                    return self._remember_reply(state, message_id, result)
-                result = {
-                    "status": "recorded",
-                    "task": promoted["task"],
-                    "text": (
-                        "Идея уже реализована: результат сохранён, "
-                        "задача отмечена выполненной."
-                        if promoted["task"].get("status") == "completed"
-                        else self._idea_completion_text(
-                            payload["ideas_completed"]
-                        )
-                    ),
-                }
-                self._mark_completed(
-                    state,
-                    pending["interaction_id"],
-                    result,
-                )
+                else:
+                    # Also handles an August installation's legacy pending idea stage safely.
+                    self._record_optional_idea_review(idea, text=text, choice="discussed", message_id=message_id, now=local_now)
+                    result = {"status": "recorded", "text": "Заметка об идее сохранена как твой ответ. Задача, выполнение и успех автоматически не создаются."}
+                self._mark_completed(state, pending["interaction_id"], result)
                 state["pending_interaction"] = None
                 return self._remember_reply(state, message_id, result)
 
@@ -4570,6 +4502,7 @@ class PersonalDailyService:
                     or pending.get("stage")
                     not in {
                         "awaiting_success_action",
+                        "awaiting_idea_choice",
                         "awaiting_idea_result",
                     }
                     or not _instant_precedes(
@@ -4581,10 +4514,8 @@ class PersonalDailyService:
                         "status": "stale",
                         "text": "Эта вечерняя кнопка больше не активна.",
                     }
-                if pending["stage"] == "awaiting_idea_result":
-                    pending["payload"]["resume_stage"] = (
-                        "awaiting_idea_result"
-                    )
+                if pending["stage"] in {"awaiting_idea_choice", "awaiting_idea_result"}:
+                    pending["payload"]["resume_stage"] = pending["stage"]
                 pending["stage"] = "awaiting_success_reply"
                 pending["payload"]["success_callback"] = callback_data
                 result = {
@@ -4659,6 +4590,12 @@ def build_parser() -> argparse.ArgumentParser:
     route_reply_parser.add_argument("--message-id", required=True)
     route_reply_parser.add_argument("--at", help="Aware ISO date-time for testing")
 
+    for name in ("ten-feedback", "activity-command"):
+        explicit = commands.add_parser(name, help="Explicit optional feedback; never consume a pending daily reply")
+        explicit.add_argument("--text-base64", required=True)
+        explicit.add_argument("--message-id", required=True)
+        explicit.add_argument("--at", help="Aware ISO timestamp for local tests")
+
     route_callback_parser = commands.add_parser(
         "route-callback",
         help="Route one pd:* Telegram callback",
@@ -4727,7 +4664,7 @@ def _interaction_time(value: str | None, timezone: ZoneInfo) -> datetime | None:
 
 
 def _command_text(args: argparse.Namespace) -> str:
-    if args.text is not None:
+    if getattr(args, "text", None) is not None:
         text = args.text
     else:
         try:
@@ -4898,6 +4835,39 @@ def _dispatch_command(
         )
 
 
+def record_activity_command(store, command, *, message_id, now):
+    """Track explicit user reports, independently of daily pending or task status."""
+    match = re.fullmatch(r"/занятие\s+(начало|конец|отложить|пропустить)\s+(.+)", command.strip(), re.I | re.S)
+    if not match or not match[2].strip() or len(match[2]) > 2000:
+        raise PersonalEventError("Используй /занятие начало <название>, конец <результат>, отложить <пояснение> или пропустить <пояснение>.")
+    _nonempty_string(message_id, "message_id")
+    if now.tzinfo is None: raise PersonalEventError("activity report needs an aware timestamp")
+    action = {"начало": "started", "конец": "finished", "отложить": "postponed", "пропустить": "skipped"}[match[1].casefold()]
+    key = f"activity_command:{message_id}"
+    with _dispatch_lock(store.data_dir / ".activity-command.lock"):
+        events = store.load_materialized_events()
+        existing = next((e for e in events if e.get("idempotency_key") == key), None)
+        if existing:
+            if existing.get("self_report", {}).get("command") != command: raise PersonalEventError("Этот ID сообщения уже содержит другое действие.")
+            return existing["self_report"]["response"]
+        active = None
+        for event in events:
+            data = event.get("self_report", {})
+            if data.get("activity_action") == "started": active = event
+            elif data.get("activity_action") in {"finished", "postponed", "skipped"}: active = None
+        if action == "started" and active: raise PersonalEventError("Уже есть начатое занятие. Сначала сообщи его окончание, перенос или пропуск.")
+        if action != "started" and not active: raise PersonalEventError("Нет явно начатого занятия. По времени или расписанию начало не предполагается.")
+        activity_id = active["links"]["activity_id"] if active else f"activity-{hashlib.sha256(message_id.encode()).hexdigest()[:12]}"
+        response = {"status": "recorded", "action": action, "activity_id": activity_id,
+                    "text": {"started": "Начало занятия записано по твоему сообщению.", "finished": "Окончание и твой результат записаны. Это не автоматическое выполнение задачи или успех.", "postponed": "Занятие отложено; таймер завершения не создаётся.", "skipped": "Пропуск записан без оценки."}[action]}
+        store.append_event({"type": "focus_started" if action == "started" else "focus_finished" if action == "finished" else "decision",
+            "idempotency_key": key, "occurred_at": now.isoformat(), "source": {"channel": "telegram", "message_id": message_id},
+            "description": match[2].strip(), "links": {"activity_id": activity_id},
+            "self_report": {"activity_action": action, "command": command, "evidence_kind": "explicit_self_report", "timestamp_basis": "user_reported_now", "response": response}})
+        render_reading_views(store.data_dir, store.load_materialized_events())
+        return response
+
+
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
@@ -4906,6 +4876,28 @@ def main(argv: list[str] | None = None) -> int:
             events_path=args.events_path,
             data_dir=args.data_dir,
         )
+        if args.command == "ten-feedback":
+            if os.environ.get("PDS_EVENING_TEN_ENABLED") != "1":
+                _print_json({"status": "disabled", "text": "Десятка не включена в этой установке."})
+                return 0
+            from evening_ten import TenStore
+            try:
+                now = _interaction_time(args.at, ZoneInfo(DEFAULT_TIMEZONE)) or datetime.now(ZoneInfo(DEFAULT_TIMEZONE))
+                result = TenStore(store.data_dir, DEFAULT_TIMEZONE).feedback(_command_text(args), message_id=args.message_id, now=now)
+            except (ValueError, OSError) as exc:
+                result = {"status": "invalid", "text": str(exc)}
+            _print_json(result)
+            return 0
+
+        if args.command == "activity-command":
+            now = _interaction_time(args.at, ZoneInfo(DEFAULT_TIMEZONE)) or datetime.now(ZoneInfo(DEFAULT_TIMEZONE))
+            try:
+                result = record_activity_command(store, _command_text(args), message_id=args.message_id, now=now)
+            except PersonalEventError as exc:
+                result = {"status": "invalid", "text": str(exc)}
+            _print_json(result)
+            return 0
+
         if args.command == "append":
             try:
                 event = json.loads(

@@ -34,3 +34,5 @@ Show a short day summary, optional separate goal alignment, and numbered items 1
 A numbered selection means interest, not a task or completion. Ask to save only if persistence was not already requested; do not silently write to files or external memory. With authorized tracking, store the exact feedback and distinguish `interested`, `chosen`, `attempted`, `reported outcome`, and `did not fit`. “It worked” without an outcome description is not a successful case. No reply means unknown, not rejection.
 
 This portable skill runs on demand. It does not install a scheduler, collect activity, send a 22:00 message, or connect to Telegram. If separately asked to automate it, require the user's timezone and destination, preserve the list's numbering after delivery, avoid duplicate sends, and do not retry uncertain delivery blindly. A later journal conversation should work even if no Ten was generated.
+
+When asked to export a prepared Ten for Personal Daily Assistant 0.2, read [the optional export contract](references/daily-assistant-export.md). It adds an explicit runtime envelope; ordinary on-demand use does not require it.

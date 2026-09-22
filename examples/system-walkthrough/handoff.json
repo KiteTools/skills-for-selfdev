@@ -1,0 +1,53 @@
+{
+  "fictional": true,
+  "format": "illustrative-handoff-not-runtime-import",
+  "evidence": [
+    {
+      "id": "e1",
+      "source": "supplied meeting note",
+      "kind": "self_report",
+      "text": "I interrupted before clarifying the question."
+    },
+    {
+      "id": "e2",
+      "source": "later supplied note",
+      "kind": "self_report",
+      "text": "I clarified the question, explained that part, and the conversation continued."
+    }
+  ],
+  "hypotheses": [
+    {
+      "text": "Questions are experienced as rejection",
+      "status": "unconfirmed",
+      "source": "agent interpretation of e1"
+    }
+  ],
+  "understandings": [
+    {
+      "id": "u1",
+      "text": "A question may clarify a proposal. I will first understand its meaning.",
+      "status": "accepted_by_person"
+    }
+  ],
+  "suggestions": [
+    {
+      "id": "p1",
+      "text": "Ask what needs clarification before answering.",
+      "status": "interested"
+    }
+  ],
+  "actions": [
+    {
+      "id": "a1",
+      "suggestion_id": "p1",
+      "understanding_id": "u1",
+      "status": "attempt_reported",
+      "choice_source": "explicit user choice",
+      "outcome_evidence": [
+        "e2"
+      ]
+    }
+  ],
+  "vitality": null,
+  "lasting_change": "unknown"
+}

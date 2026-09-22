@@ -29,3 +29,5 @@ A cleaned transcript is still speech. Summarizing it, improving the argument, or
 Your glossary stays yours. The repository contains no private terminology corpus and the skill requires no account or automatic upload. Your chosen assistant's data handling still applies.
 
 [Back to Skills for Selfdev](../../README.md)
+
+[Place in the personal system](../system-map.md)

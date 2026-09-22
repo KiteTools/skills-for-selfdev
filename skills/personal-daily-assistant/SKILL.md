@@ -5,10 +5,14 @@ description: Use when installing, configuring, repairing, or verifying a private
 
 # OpenClaw Personal Daily Assistant
 
-This package adapts the portable August 2026 snapshot. It is not the author's
-latest private setup. The deterministic Telegram dialogue is primarily Russian;
-the installation guide is English. Python 3.10+, Node.js and a compatible
-OpenClaw installation are required on a macOS/Linux host.
+Portable **v0.2.0** keeps the August 2026 journal/runtime base and adds selected
+September mechanics: optional idea discussion, explicit activity reports, and
+an optional prepared Evening Ten store/transport. It is a bounded modular
+adaptation, **not a copy of the latest private assistant**. The deterministic
+Telegram dialogue is primarily Russian. Python 3.10+, Node.js and a compatible
+OpenClaw installation are required on macOS/Linux. WSL with a Linux filesystem
+is an expected POSIX route but has not been tested; native Windows is unsupported
+(`fcntl`, permissions and POSIX paths are required).
 
 Install the bundled deterministic runtime as a private local system. Keep the
 conversation useful to one owner; treat journaling and automation as background
@@ -30,10 +34,29 @@ infrastructure.
    into the dedicated workspace. Separately integrate the config fragment and
    schedules using the installed OpenClaw release's supported interface. An
    installer success does not activate the live bot or scheduler.
-7. Run the bundled Python and Node tests, followed by `scripts/verify.py`.
-8. Perform one live text-message smoke test in the owner's private Telegram
+7. For an existing portable installation, use the side-by-side upgrade described
+   in `references/installation-contract.md`; never apply the installer over it.
+8. Run the bundled Python and Node tests, followed by `scripts/verify.py`.
+9. Perform one live text-message smoke test in the owner's private Telegram
    chat. Do not report success unless the bot reply and local event readback
    both succeed.
+
+## Optional mechanics
+
+- `идея:` captures an idea. Evening discussion offers **обсудить / оставить /
+  пропустить**; no mandatory 15–30 minute task or automatic promotion follows.
+- `/занятие начало <title>`, `/занятие конец <result>`, `/занятие отложить
+  <reason>`, `/занятие пропустить <reason>` record explicit reports about one
+  active activity. A timestamp is when the owner reported it, not independent
+  observation. No timer, schedule or computer window completes an activity.
+- Evening Ten is **off by default**. `--enable-evening-ten` prepares 22:00 Ten
+  and 22:10 journal-retro declarations; otherwise the ordinary retro stays at
+  22:00. Neither option registers jobs or sends a message by itself.
+- Read `references/evening-ten-integration.md` for the exact bridge from the
+  standalone Evening Ten skill: prepare a record, review it (person or agent),
+  validate/import it locally, then deliver only when enabled. No source collection
+  or generation is bundled. `interested`, `chosen`, `attempted`, reported outcome
+  and self-reported completion remain distinct from tasks and successes.
 
 ## Guardrails
 

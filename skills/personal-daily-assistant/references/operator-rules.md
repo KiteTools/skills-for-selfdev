@@ -53,7 +53,8 @@ machine twice.
   vitality delta with inline buttons.
 - 22:00: show compact confirmed activity, ask what is missing, calculate the
   total after the answer, ask the evening 1:1 question, offer one
-  `Добавить успех` button and walk unfinished ideas.
+  `Добавить успех` button and offer optional discussion of one idea.
+  With Evening Ten explicitly enabled: Ten at 22:00, this journal retro at 22:10.
 - Sunday 20:00: show the vitality sum, successes including every `+` and `++`,
   the week's explicitly named mediators and repeated patterns, then ask for the
   owner's final feeling.
@@ -64,19 +65,23 @@ delta distributions.
 
 ## Ideas and tasks
 
-Save `идея:` immediately. In the evening, first detect an already completed
-step from successes, vitality context, activity evidence or the owner's reply.
-Otherwise request one material trace that takes 15–30 minutes: a note,
-specification, plan, file or implementation.
+Save `идея:` immediately. Offer one optional discussion with «обсудить»,
+«оставить» or «пропустить». No reply creates no debt. Do not demand a timed first
+step, infer completion from similar text, or automatically create a task from an
+idea. A discussion note is the owner's account, not an objective success.
+Existing tasks are preserved; changing their status needs explicit authority and
+specific supporting evidence. A completed agent turn is not completion evidence.
 
-If the owner says the idea is already implemented, accept concrete evidence as
-completion. Do not insist on a formal note. Create one local linked task for a
-shaped idea; reuse it on retries. Keep completed tasks at the bottom with `✅`;
-never delete or renumber them.
+Evening Ten feedback is separate from the retro pending interaction. `/ход 2,4`
+is interest only; dated `/десятка` commands record explicit later decisions and
+reports. Never feed those commands through `route-reply` a second time. A
+self-reported completion is labeled as such and does not create a task, success
+or vitality score. Keep source IDs and proposals distinct from observed facts.
 
-Close a task only from explicit confirmation or evidence such as Git, files,
-tests, external readback, a journal result or an optional focus-session result.
-A mere mention or a completed Codex turn is not proof.
+`/занятие` commands record reported starts/ends, postponement and skip for one
+activity at a time. Do not infer attendance or completion from time passing.
+The finish text can name an incomplete outcome; it ends the reported activity,
+not the user's larger goal. These commands leave any pending daily dialogue intact.
 
 ## Data and reports
 

@@ -371,3 +371,28 @@ test("matches only the approved technical Telegram notices", () => {
     false,
   );
 });
+
+test('explicit Ten feedback is opt-in and never consumes numeric retrospective replies', () => {
+  const pending = { pending: true, stage: 'awaiting_evening_answer' };
+  assert.equal(selectInboundRoute({ content: '/ход 2,4', messageId: 'synthetic', pending, eveningTenEnabled: true }).kind, 'ten-feedback');
+  assert.equal(selectInboundRoute({ content: '2,4', messageId: 'synthetic', pending, eveningTenEnabled: true }).kind, 'reply');
+  assert.equal(selectInboundRoute({ content: '/ход 2', messageId: 'synthetic', pending, eveningTenEnabled: false }), null);
+});
+
+test('explicit Ten and activity commands bypass pending and never request a continuation', async () => {
+  for (const [text, kind] of [['/ход 2,4', 'ten-feedback'], ['/занятие начало Пример', 'activity-command']]) {
+    const calls = [];
+    const handler = router.createFastReplyDispatchHandler({
+      config: { ownerTelegramId: 'synthetic-owner', eveningTenEnabled: true }, logger: { warn: assert.fail },
+      continuationOutbox: {}, prepareContinuationForReply: async () => assert.fail('no model continuation'),
+      runPds: async (_, args) => { calls.push(args); return { text: 'Synthetic acknowledgement' }; },
+    });
+    const result = await handler({ originatingChannel: 'telegram', sessionKey: 'synthetic-session', ctx: { SenderId: 'synthetic-owner', BodyForCommands: text, MessageSid: 'synthetic-message' } }, {
+      dispatcher: { sendFinalReply: () => true, getQueuedCounts: () => ({ final: 1 }) }, recordProcessed() {}, markIdle() {},
+    });
+    assert.equal(result.handled, true);
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0][0], kind);
+    assert.equal(Buffer.from(calls[0][2], 'base64').toString('utf8'), text);
+  }
+});

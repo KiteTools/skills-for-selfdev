@@ -30,6 +30,7 @@ async function runPds(config: PluginConfig, args: string[]) {
       PDS_DATA_DIR: String(config.dataDir),
       PDS_TIMEZONE: String(config.timezone),
       PDS_SUMMARIES_DIR: String(config.summariesDir),
+      PDS_EVENING_TEN_ENABLED: config.eveningTenEnabled === true ? "1" : "0",
     },
     timeout: 3000,
     maxBuffer: 1024 * 1024,

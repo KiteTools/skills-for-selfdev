@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "timezone": null,
+  "l1": null,
+  "l2": [],
+  "period_focus": { "text": null, "l2_id": null, "review_on": null },
+  "tasks": [],
+  "vitality": { "enabled": true, "journal_enabled": false }
+}

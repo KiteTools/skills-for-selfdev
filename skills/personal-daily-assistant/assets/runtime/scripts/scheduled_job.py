@@ -35,6 +35,14 @@ def run_job(job: str, *, dry_run: bool = False) -> None:
     if not target:
         raise RuntimeError("PDS_TELEGRAM_TARGET is required for dispatch jobs")
 
+    if job == "ten":
+        if os.environ.get("PDS_EVENING_TEN_ENABLED") != "1":
+            raise RuntimeError("Evening Ten delivery is disabled")
+        command = [python_bin, str(PROJECT_ROOT / "scripts" / "evening_ten.py"), "dispatch", "--target", target]
+        if dry_run: command.append("--dry-run")
+        _run(command)
+        return
+
     dispatch = [*common, "dispatch", job, "--target", target]
     if job == "evening" and os.environ.get("PDS_INCLUDE_CODEX_ACTIVITY", "").strip() == "1":
         source_value = os.environ.get("PDS_CODEX_ACTIVITY_SOURCE_DIR", "").strip()
@@ -68,7 +76,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "job",
-        choices=("preflight", "morning", "viability", "evening", "weekly"),
+        choices=("preflight", "morning", "viability", "evening", "weekly", "ten"),
     )
     parser.add_argument("--dry-run", action="store_true")
     return parser

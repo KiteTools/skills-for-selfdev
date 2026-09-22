@@ -2,7 +2,10 @@
 
 **English** · [Русский](disco-mirror.ru.md)
 
-![Abstract visual for reflection and an inner council of voices](../../assets/reflect.png)
+![Abstract visual for reflection and an inner council of voices](../../skills/disco-mirror/assets/voices-atlas.webp)
+
+The atlas shows 24 original generated voice illustrations: six each for intellect, psyche, physique and motorics. These are project illustrations, not game artwork or a personal profile.
+
 
 **Meet the voices that shape your choices—and test the story against your actual behavior.**
 
@@ -33,3 +36,5 @@ This is a reflective metaphor, not a validated personality test or diagnosis. Al
 **Release status:** portable instruction package. It preserves the source workflow's interview phases and correction rules; the public package has not been validated as a personality instrument or tested across all assistant hosts.
 
 [Open the skill](../../skills/disco-mirror/SKILL.md) · [Fictional calibration example](../../examples/disco-mirror/example.md) · [Back to the collection](../../README.md)
+
+[Place in the personal system](../system-map.md)

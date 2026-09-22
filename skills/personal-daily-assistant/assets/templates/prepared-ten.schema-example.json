@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "date": "2099-01-02",
+  "timezone": "UTC",
+  "source_manifest": {
+    "evidence_ids": [
+      "e1",
+      "e2",
+      "e3"
+    ],
+    "goal_ids": [
+      "g1"
+    ]
+  },
+  "day_threads": [
+    {
+      "id": "t1",
+      "title": "Fictional thread 1",
+      "substantive": true,
+      "evidence_ids": [
+        "e1"
+      ]
+    },
+    {
+      "id": "t2",
+      "title": "Fictional thread 2",
+      "substantive": true,
+      "evidence_ids": [
+        "e2"
+      ]
+    },
+    {
+      "id": "t3",
+      "title": "Fictional thread 3",
+      "substantive": true,
+      "evidence_ids": [
+        "e3"
+      ]
+    }
+  ],
+  "day_summary": "Three fictional activities; offline activity is unknown.",
+  "alignment": null,
+  "candidates": [
+    {
+      "id": "c1",
+      "text": "Fictional opportunity 1: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e1"
+      ],
+      "thread_id": "t1",
+      "move_type": "move-1",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": true
+    },
+    {
+      "id": "c2",
+      "text": "Fictional opportunity 2: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e2"
+      ],
+      "thread_id": "t2",
+      "move_type": "move-2",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": true
+    },
+    {
+      "id": "c3",
+      "text": "Fictional opportunity 3: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e3"
+      ],
+      "thread_id": "t3",
+      "move_type": "move-3",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": true
+    },
+    {
+      "id": "c4",
+      "text": "Fictional opportunity 4: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e1"
+      ],
+      "thread_id": "t1",
+      "move_type": "move-0",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c5",
+      "text": "Fictional opportunity 5: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e2"
+      ],
+      "thread_id": "t2",
+      "move_type": "move-1",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c6",
+      "text": "Fictional opportunity 6: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e3"
+      ],
+      "thread_id": "t3",
+      "move_type": "move-2",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c7",
+      "text": "Fictional opportunity 7: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e1"
+      ],
+      "thread_id": "t1",
+      "move_type": "move-3",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c8",
+      "text": "Fictional opportunity 8: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e2"
+      ],
+      "thread_id": "t2",
+      "move_type": "move-0",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c9",
+      "text": "Fictional opportunity 9: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e3"
+      ],
+      "thread_id": "t3",
+      "move_type": "move-1",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c10",
+      "text": "Fictional opportunity 10: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e1"
+      ],
+      "thread_id": "t1",
+      "move_type": "move-2",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c11",
+      "text": "Fictional opportunity 11: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e2"
+      ],
+      "thread_id": "t2",
+      "move_type": "move-3",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c12",
+      "text": "Fictional opportunity 12: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e3"
+      ],
+      "thread_id": "t3",
+      "move_type": "move-0",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c13",
+      "text": "Fictional opportunity 13: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e1"
+      ],
+      "thread_id": "t1",
+      "move_type": "move-1",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c14",
+      "text": "Fictional opportunity 14: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e2"
+      ],
+      "thread_id": "t2",
+      "move_type": "move-2",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c15",
+      "text": "Fictional opportunity 15: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e3"
+      ],
+      "thread_id": "t3",
+      "move_type": "move-3",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c16",
+      "text": "Fictional opportunity 16: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e1"
+      ],
+      "thread_id": "t1",
+      "move_type": "move-0",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c17",
+      "text": "Fictional opportunity 17: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e2"
+      ],
+      "thread_id": "t2",
+      "move_type": "move-1",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c18",
+      "text": "Fictional opportunity 18: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e3"
+      ],
+      "thread_id": "t3",
+      "move_type": "move-2",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c19",
+      "text": "Fictional opportunity 19: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e1"
+      ],
+      "thread_id": "t1",
+      "move_type": "move-3",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    },
+    {
+      "id": "c20",
+      "text": "Fictional opportunity 20: try a small change for a clearer example.",
+      "goal_id": "g1",
+      "evidence_ids": [
+        "e2"
+      ],
+      "thread_id": "t2",
+      "move_type": "move-0",
+      "mechanism": "A fictional useful connection.",
+      "exploratory": false
+    }
+  ],
+  "selected": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7",
+    "c8",
+    "c9",
+    "c10"
+  ],
+  "checks": {
+    "history_available": false,
+    "coverage_complete_for_supplied_input": true,
+    "preparation_reviewed": false
+  }
+}

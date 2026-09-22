@@ -21,6 +21,12 @@ Skill instructions, reusable helpers, empty templates, original illustrations, a
 
 Local output does not imply local AI inference. A skill cannot override a provider's retention policy. Browser and speech tools can also have separate data routes.
 
+## Personal context and the new practices
+
+Codex Assistant stores context only in a selected private location; journaling is a separate choice. GoR and Weekly Review use supplied or explicitly designated material and do not automatically connect history. Saving a result does not authorize publication or delivery to other people.
+
+A prepared Evening Ten package for Daily Assistant contains a short day summary, suggestions and evidence identifiers. These can still be sensitive; keep the package private. Excluding source transcripts does not make a summary anonymous.
+
 ## Keep private material out of Git
 
 Use a separate data directory outside this checkout for transcripts, notes, reports, and journals. Ignore rules are a backup, not a privacy boundary. Check a diff before committing. Never put tokens in a prompt, issue, example, or repository file; use the private credential mechanism of the service you connect.

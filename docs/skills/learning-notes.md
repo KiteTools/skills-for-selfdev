@@ -29,3 +29,5 @@ The skill checks draft coverage instead of quietly dropping awkward points. A so
 It does not certify understanding, silently rewrite your knowledge base, or add outside research. You choose whether to turn the notes into a study or practice plan.
 
 [Back to Skills for Selfdev](../../README.md)
+
+[Place in the personal system](../system-map.md)

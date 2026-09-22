@@ -7,6 +7,10 @@ description: Run an adaptive self-reflection interview using 24 inner voices ins
 
 Use the user's language throughout. This is a metaphor for noticing patterns, not a diagnosis, psychometric test, or discovery of someone's true personality. No game knowledge is required. The wording in this package is original; game names identify inspiration. This project is not affiliated with or endorsed by the game's creators or rights holders.
 
+## Optional visual primer
+
+The bundled [24-voice atlas](assets/voices-atlas.webp) can accompany the primer when the host can display local images. Rows follow Intellect, Psyche, Physique and Motorics; columns follow the six voices in each primer table. These original generated images illustrate metaphors, not the user or their profile. If images cannot be shown, use the text primer and continue. Do not derive traits from the user's appearance or image preference.
+
 ## Interview contract
 
 - Keep answers and the working model in the current conversation. Do not create a profile, file, memory, or external record unless the user requests it. This controls the agent's actions; do not promise anything about the host platform's retention.

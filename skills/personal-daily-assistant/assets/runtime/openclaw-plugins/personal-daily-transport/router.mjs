@@ -7,6 +7,7 @@ export const FAST_PENDING_STAGES = new Set([
   "awaiting_evening_answer",
   "awaiting_success_action",
   "awaiting_success_reply",
+  "awaiting_idea_choice",
   "awaiting_idea_result",
 ]);
 
@@ -18,6 +19,7 @@ export const CONTINUATION_PENDING_STAGES = new Set([
   "awaiting_activity_gap",
   "awaiting_evening_answer",
   "awaiting_success_reply",
+  "awaiting_idea_choice",
   "awaiting_idea_result",
 ]);
 
@@ -28,12 +30,18 @@ export function extractPdCallback(content) {
   return match?.[1] ?? null;
 }
 
-export function selectInboundRoute({ content, messageId, pending }) {
+export function selectInboundRoute({ content, messageId, pending, eveningTenEnabled = false }) {
   const callbackData = extractPdCallback(content);
   if (callbackData) {
     return { kind: "callback", callbackData };
   }
   const text = String(content || "").trim();
+  if (/^\/(?:ход|десятка)(?:\s|$)/iu.test(text)) {
+    return eveningTenEnabled && messageId ? { kind: "ten-feedback", text, messageId: String(messageId) } : null;
+  }
+  if (/^\/занятие(?:\s|$)/iu.test(text) && messageId) {
+    return { kind: "activity-command", text, messageId: String(messageId) };
+  }
   if (
     messageId &&
     /^идея(?:\s*[:—–-]|\.)\s*\S/iu.test(text)
@@ -143,6 +151,7 @@ export function createFastReplyDispatchHandler({
         content,
         messageId,
         pending: { pending: false },
+        eveningTenEnabled: config.eveningTenEnabled === true,
       });
       let route = callbackRoute;
       let response;
@@ -152,6 +161,8 @@ export function createFastReplyDispatchHandler({
           "--data",
           route.callbackData,
         ]);
+      } else if (route?.kind === "ten-feedback" || route?.kind === "activity-command") {
+        response = await runPds(config, [route.kind, "--text-base64", Buffer.from(route.text, "utf8").toString("base64"), "--message-id", route.messageId]);
       } else if (route?.kind === "capture") {
         response = await runPds(config, [
           "capture",
@@ -168,6 +179,7 @@ export function createFastReplyDispatchHandler({
           content,
           messageId,
           pending,
+          eveningTenEnabled: config.eveningTenEnabled === true,
         });
         if (!route || route.kind !== "reply") {
           return;

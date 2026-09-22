@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skills-for-selfdev",
-  "version": "0.1.0",
-  "description": "AI skills for self-development: reflection, learning, journaling, life events, and a personal daily assistant.",
+  "version": "0.2.0",
+  "description": "Skills for selfdev: standalone reflection and learning practices, personal Codex context, and an optional daily assistant.",
   "author": {
     "name": "KiteTools",
     "url": "https://github.com/KiteTools"

@@ -37,3 +37,5 @@ Longevity использует **Андрофизическую модель с 
 [Открыть инструкции скилла](../../skills/longevity-intake/SKILL.md) · [Исходный код приложения](https://github.com/KiteTools/longevity-webmcp) · [Подготовить хронологию жизни](life-events.ru.md)
 
 [Каталог](../catalog.ru.md) · [К Skills for Selfdev](../../README.ru.md)
+
+[Место в личной системе](../system-map.ru.md)
