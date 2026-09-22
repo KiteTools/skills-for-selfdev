@@ -1,5 +1,7 @@
 # Start with one useful result
 
+[English](getting-started.md) · [Русский](getting-started.ru.md)
+
 Pick a skill from the [catalog](catalog.md). Read its input, output, and requirements before bringing personal material.
 
 ## Install a standalone skill

@@ -1,5 +1,7 @@
 # Fictional reconstruction review
 
+**English** · [Русский](figure-review.ru.md)
+
 Source: [source.svg](source.svg), an original illustrative sketch created for this repository. No PDF page numbering applies.
 
 Output: [figure.svg](figure.svg).

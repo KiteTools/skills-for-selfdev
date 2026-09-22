@@ -1,5 +1,7 @@
 # Validation and release limits
 
+[English](validation.md) · [Русский](validation.ru.md)
+
 Version 0.1.0 is the first public adaptation. A useful release is explicit about what was checked and what still depends on your environment.
 
 ## Package checks

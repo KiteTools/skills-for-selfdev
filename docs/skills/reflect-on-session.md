@@ -1,5 +1,7 @@
 # Reflect on a Session
 
+**English** · [Русский](reflect-on-session.ru.md)
+
 ![Abstract visual for turning a conversation into a clear reflection](../../assets/reflect.png)
 
 **Turn a meaningful consultation into something you can revisit and use.**
@@ -36,5 +38,3 @@ Use only transcripts you are entitled to process. The skill does not upload them
 **Release status:** portable workflow and original output guides. The public adaptation preserves source attribution, client choice, accumulated context, and the optional visual sequence. No recording connector, image generator, or external synchronization is bundled. End-to-end output depends on the chosen assistant and tools.
 
 [Open the skill](../../skills/reflect-on-session/SKILL.md) · [Fictional worked example](../../examples/reflect-on-session/example.md) · [Back to the collection](../../README.md)
-
-**По-русски:** из своей консультации — проверяемое саммари, новые понимания с отметкой принятия, связки с действиями и, по желанию, визуальные напоминания. Гипотеза, выбор и результат не смешиваются.

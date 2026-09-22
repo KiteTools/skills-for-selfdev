@@ -1,8 +1,12 @@
 # Personal cabinet + SendPulse: carry a consultation into daily life
 
+[English](lk-sendpulse.md) · [Русский](lk-sendpulse.ru.md)
+
 The IMT personal cabinet (**ЛК**) connects consultation notes, daily journals and a Telegram bot. Its purpose is to keep the ideas a person reviewed with their consultant available during the period between sessions.
 
 This is an **integration guide for an existing application**, not a bundled application or a working connector supplied by this repository.
+
+**Read the [complete cabinet guide](../guides/lk-guide.md)** for all seven tabs, everyday scenarios, data flows and troubleshooting. It is published from the existing application's guide; it does not grant service access.
 
 ## The working loop
 
@@ -44,3 +48,13 @@ The service operator must provision the application, storage, Telegram/SendPulse
 Unlike this public skills repository, the cabinet stores personal records and connects external services. Use your own deployment or the service account your operator provides. Verify its retention, sharing and access settings before uploading a transcript. Do not publish real examples, contact identifiers, screenshots of private records or credentials in issues and pull requests.
 
 The guide describes the reviewed cabinet workflow. It does not redistribute the app, promise a public signup route, or assume an agent has SendPulse access. For a standalone local assistant package, see [Personal Daily Assistant](../skills/personal-daily-assistant.md).
+
+## Make it independently deployable
+
+The reviewed source uses a static interface, Netlify Functions, Neon/Postgres, Telegram authentication, SendPulse and an AI API; SMTP handles optional email delivery. The app includes database migrations and a configuration example. A reproducible release must also document the bot-side flows, variable mappings, callbacks and account setup that do not come from installing an AI skill.
+
+The proposed first milestone is a clean public app repository that another operator can deploy on the same stack with their own accounts and an empty database. Keep that milestone small. Then separate the cabinet's data and processing from a SendPulse adapter, so another transport can be added without rewriting the cabinet.
+
+**Neither milestone is implemented by this documentation release.** See the [portability plan](portable-apps.md#lk) for the package contents, login choices and a concrete first-user check.
+
+[Catalog](../catalog.md) · [Skills for Selfdev](../../README.md)

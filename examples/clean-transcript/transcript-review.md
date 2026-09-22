@@ -1,5 +1,7 @@
 # Editorial review
 
+**English** · [Русский](transcript-review.ru.md)
+
 Original fictional demonstration. The source was preserved.
 
 - 00:00: omitted audio check and greeting.

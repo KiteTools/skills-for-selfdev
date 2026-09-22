@@ -1,5 +1,7 @@
 # Learning notes
 
+**English** · [Русский](learning-notes.ru.md)
+
 ![Skills for Selfdev: source-grounded learning, readable transcripts, editable diagrams, and interview review](../../assets/learn.png)
 
 **Keep the explanation you can return to, not just a list of highlights.**

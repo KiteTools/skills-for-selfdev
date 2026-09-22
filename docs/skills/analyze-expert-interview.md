@@ -1,5 +1,7 @@
 # Analyze an expert interview
 
+**English** · [Русский](analyze-expert-interview.ru.md)
+
 ![Skills for Selfdev: source-grounded learning, readable transcripts, editable diagrams, and interview review](../../assets/learn.png)
 
 **See the argument inside the conversation.**

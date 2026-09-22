@@ -1,5 +1,7 @@
 # Evening Ten
 
+**English** · [Русский](evening-ten.ru.md)
+
 ![Abstract visual for daily rhythm and small possibilities](../../assets/rhythm.png)
 
 **Ten useful possibilities you might have missed in today's work and life.**
@@ -34,5 +36,3 @@ A plain diary works; Computer History is optional. The skill consumes summaries 
 **Release status:** portable on-demand instruction package. The source workflow delivered its report at 22:00, but this package does not install a schedule, collect activity, or connect to a messaging service. Those integrations need separate setup, a timezone, and user authorization. Repetition checks require earlier lists; without them the skill declares that limitation.
 
 [Open the skill](../../skills/evening-ten/SKILL.md) · [Fictional input and output excerpt](../../examples/evening-ten/example.md) · [Back to the collection](../../README.md)
-
-**По-русски:** вечерняя «десятка» — десять необязательных возможностей на основе реального дня и текущих целей. Не десять задач, не советы о продуктивности и не оценка дня.

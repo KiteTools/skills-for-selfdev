@@ -1,5 +1,7 @@
 # From transcript to a practice chain
 
+**English** · [Русский](example.ru.md)
+
 **Fictional example, written for this repository. No real consultation material.**
 
 This tiny excerpt demonstrates attribution. It is too short for a full reflection, ten quotations, or a seven-diagram package.

@@ -65,6 +65,8 @@ The workflows grew out of personal learning and IMT practice. Method-specific id
 
 Prism is an external writing tool. It is not packaged or reimplemented in this collection.
 
+For the cabinet's everyday workflow, read the [complete user guide](docs/guides/lk-guide.md). The [SOOV and cabinet portability plan](docs/integrations/portable-apps.md) describes how to turn these existing tools into independent distributions; it is a proposal, not an application release. All visitor guides and skill descriptions are also available in [Russian](README.ru.md).
+
 ## Private by design of the package
 
 This repository contains workflow instructions, original illustrations, empty templates, and clearly fictional examples. It contains no personal diaries, client sessions, family histories, account tokens, or private activity exports.

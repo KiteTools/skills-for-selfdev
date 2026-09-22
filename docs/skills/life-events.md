@@ -1,5 +1,7 @@
 # Life events: turn memories into a timeline
 
+**English** · [Русский](life-events.ru.md)
+
 ![Illustration of the explore workflow](../../assets/explore.png)
 
 Start with a few notes, a conversation transcript, or one event at a time. Get a clear chronology that keeps what happened separate from how you experienced it.

@@ -1,5 +1,7 @@
 # A prediction corrected
 
+**English** · [Русский](example.ru.md)
+
 **Fictional example, written for this repository. No personal interview data.**
 
 The following is an excerpt, not a complete interview or finished portrait.

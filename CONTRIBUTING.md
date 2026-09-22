@@ -1,5 +1,7 @@
 # Contributing
 
+[English](CONTRIBUTING.md) · [Русский](CONTRIBUTING.ru.md)
+
 Improve one real workflow at a time. A useful contribution explains the input, the outcome, and the decision the assistant would otherwise get wrong.
 
 For a skill change, keep its `SKILL.md`, visitor page in `docs/skills/`, and example consistent. Preserve source attribution and uncertainty. Do not add automatic account connections or scheduled actions to a workflow that previously only analyzed supplied material.

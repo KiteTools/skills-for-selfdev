@@ -1,5 +1,7 @@
 # Longevity intake: explore a conditional Life Function
 
+**English** · [Русский](longevity-intake.ru.md)
+
 ![Illustration of the explore workflow](../../assets/explore.png)
 
 Bring the facts you already know about your family and life events. The assistant helps fill the meaningful gaps one question at a time, then explains the scenarios returned by the Longevity app.

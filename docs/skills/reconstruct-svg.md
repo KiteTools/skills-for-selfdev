@@ -1,5 +1,7 @@
 # Reconstruct SVG
 
+**English** · [Русский](reconstruct-svg.ru.md)
+
 ![Skills for Selfdev: source-grounded learning, readable transcripts, editable diagrams, and interview review](../../assets/learn.png)
 
 **Make a useful diagram editable without changing its meaning.**

@@ -1,5 +1,7 @@
 # A day becomes a few possible moves
 
+**English** · [Русский](example.ru.md)
+
 **Fictional example, written for this repository. No recorded personal activity.**
 
 This is an input/output excerpt showing the intended quality, not a completed twenty-candidate selection or a claim of a tested run.

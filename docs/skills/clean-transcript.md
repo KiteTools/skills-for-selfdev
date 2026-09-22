@@ -1,5 +1,7 @@
 # Clean transcript
 
+**English** · [Русский](clean-transcript.ru.md)
+
 ![Skills for Selfdev: source-grounded learning, readable transcripts, editable diagrams, and interview review](../../assets/learn.png)
 
 **Turn noisy recognition into readable speech without losing what was said.**

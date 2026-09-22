@@ -1,5 +1,7 @@
 # Feedback and prediction
 
+**English** · [Русский](readable-transcript.ru.md)
+
 Source: [raw.txt](raw.txt). Editorially cleaned fictional speech: technical chatter and dictation instructions removed; substantive explanations retained. Times are source anchors, not newly estimated word timings.
 
 ## A result can inform the next action

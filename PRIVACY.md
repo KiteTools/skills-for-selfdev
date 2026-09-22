@@ -1,5 +1,7 @@
 # Data boundaries
 
+[English](PRIVACY.md) · [Русский](PRIVACY.ru.md)
+
 The repository distributes instructions and code. It has no shared account system, central journal, telemetry service, or collection endpoint.
 
 ## What is public

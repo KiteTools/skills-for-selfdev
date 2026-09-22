@@ -1,5 +1,7 @@
 # Fictional example: keep a useful practice record
 
+**English** · [Русский](README.ru.md)
+
 Every sentence in this example was written for this repository. It describes no real person, recording, or consultation.
 
 - [Input transcript](transcript.md)

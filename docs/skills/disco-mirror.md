@@ -1,5 +1,7 @@
 # Disco Mirror
 
+**English** · [Русский](disco-mirror.ru.md)
+
 ![Abstract visual for reflection and an inner council of voices](../../assets/reflect.png)
 
 **Meet the voices that shape your choices—and test the story against your actual behavior.**
@@ -31,5 +33,3 @@ This is a reflective metaphor, not a validated personality test or diagnosis. Al
 **Release status:** portable instruction package. It preserves the source workflow's interview phases and correction rules; the public package has not been validated as a personality instrument or tested across all assistant hosts.
 
 [Open the skill](../../skills/disco-mirror/SKILL.md) · [Fictional calibration example](../../examples/disco-mirror/example.md) · [Back to the collection](../../README.md)
-
-**По-русски:** интервью через 24 внутренних голоса: сначала желаемый образ, затем проверка на конкретных эпизодах. На выходе — уточнённый портрет, а не диагноз.

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="620" viewBox="0 0 1440 620" role="img" lang="ru" aria-labelledby="title"><title id="title">Skills for Selfdev — пусть ваш опыт приносит пользу</title><defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#ddd9cf"/></pattern></defs><rect width="1440" height="620" rx="24" fill="#f5f2ea"/><g font-family="Arial, Helvetica, sans-serif"><rect x="760" width="680" height="620" fill="url(#grid)"/>
+<path d="M 900 490 C 820 365 880 155 1070 146 C 1260 137 1320 370 1180 464 C 1050 552 858 428 939 296 C 1006 188 1200 246 1162 358" fill="none" stroke="#6957d5" stroke-width="42" stroke-linecap="round"/>
+<path d="M 824 475 C 910 530 1095 590 1275 485" fill="none" stroke="#9bbcaf" stroke-width="3"/>
+<circle cx="1163" cy="359" r="43" fill="#deedab" stroke="#282a28" stroke-width="3"/>
+<circle cx="901" cy="490" r="14" fill="#282a28"/>
+<circle cx="1070" cy="146" r="13" fill="#f5f2ea" stroke="#282a28" stroke-width="3"/>
+<text x="68" y="77" font-size="14" letter-spacing="1.2" fill="#64685d">KITE TOOLS / ОТКРЫТАЯ КОЛЛЕКЦИЯ</text>
+<text x="64" y="214" font-size="91" font-weight="700" letter-spacing="-5" fill="#252823">Skills for</text>
+<text x="64" y="315" font-size="108" font-weight="700" letter-spacing="-6" fill="#252823">Selfdev.</text>
+<text x="70" y="389" font-size="25" fill="#53584f">Пусть ваш опыт приносит пользу.</text>
+<line x1="70" y1="465" x2="697" y2="465" stroke="#cbcbbd"/>
+<text x="70" y="516" font-size="14" letter-spacing="1.2" fill="#53584f">ЗАМЕТИТЬ</text>
+<text x="240" y="516" font-size="14" letter-spacing="1.2" fill="#53584f">ПОНЯТЬ</text>
+<text x="400" y="516" font-size="14" letter-spacing="1.2" fill="#53584f">ПОПРОБОВАТЬ</text>
+<text x="575" y="516" font-size="14" letter-spacing="1.2" fill="#53584f">ПРОВЕРИТЬ</text></g></svg>

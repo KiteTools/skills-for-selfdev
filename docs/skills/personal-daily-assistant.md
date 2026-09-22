@@ -1,5 +1,7 @@
 # Personal Daily Assistant: a daily rhythm that keeps your context
 
+**English** · [Русский](personal-daily-assistant.ru.md)
+
 ![Illustration of the rhythm workflow](../../assets/rhythm.png)
 
 Choose a meaningful next step in the morning, capture ideas and small successes during the day, then reflect on what actually happened. This package turns that rhythm into a private, text-based Telegram assistant powered by OpenClaw.
@@ -26,7 +28,7 @@ Vitality is a person's reported experience, not a score that the assistant assig
 - Blank personal-context templates, a dry-run installer and an installation checker.
 - Tests for journal behavior, installation, routing, delivery and recovery.
 
-This is a **portable August 2026 snapshot**, adapted for public distribution. It does not claim to be the latest private assistant. The runtime's dialogue and capture commands are primarily **Russian**; visitor documentation is English. Full English dialogue localization is not included.
+This is a **portable August 2026 snapshot**, adapted for public distribution. It does not claim to be the latest private assistant. The runtime's dialogue and capture commands are primarily **Russian**; visitor documentation is available in English and Russian. Full English dialogue localization is not included.
 
 ## Requirements
 

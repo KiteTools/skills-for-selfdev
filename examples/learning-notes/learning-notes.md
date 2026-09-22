@@ -1,5 +1,7 @@
 # A small record for choosing a next experiment
 
+**English** · [Русский](learning-notes.ru.md)
+
 Source: the complete [fictional workshop transcript](transcript.md), P1–P5. No external material used.
 
 ## What the record is for

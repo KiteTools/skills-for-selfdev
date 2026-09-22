@@ -1,5 +1,7 @@
 # AI skills for self-development
 
+[English](catalog.md) · [Русский](catalog.ru.md)
+
 Ten focused workflows for reflection, learning, journaling, and working with life events. Choose by the result you want. Each page explains what to provide, what comes back, and which tools it needs.
 
 ## Reflect on experience
