@@ -32,7 +32,7 @@ Manual notes are enough. Computer History, Telegram, Personal Cabinet and other 
 
 | Stage | Tools | What moves forward |
 | --- | --- | --- |
-| Preserve source material | [Transcript Cleanup](skills/clean-transcript.md), [Life Events](skills/life-events.md), [SOOV](integrations/soov.md) | Reviewed text or an event with source and uncertainties |
+| Preserve source material | [Transcript Cleanup](skills/clean-transcript.md), [Life Events](skills/life-events.md), [Building Your Life Function](integrations/soov.md) | Reviewed text or an event with source and uncertainties |
 | Learn and understand | [Learning Notes](skills/learning-notes.md), [Expert Interview](skills/analyze-expert-interview.md), [Session Reflection](skills/reflect-on-session.md), [GoR](skills/reflect-on-reaction.md), [Disco](skills/disco-mirror.md) | An explanation, provisional interpretation or explicitly accepted understanding |
 | Keep a chosen focus | [Personal Codex Assistant](skills/personal-codex-assistant.md) | Personal context, accepted understanding and chosen outcome |
 | Notice further possibilities | [Evening Ten](skills/evening-ten.md) | Suggestions; interest does not create a task |

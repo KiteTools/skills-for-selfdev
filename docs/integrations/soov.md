@@ -1,6 +1,26 @@
-# SOOV / СООВ: a life-event timeline you can run yourself
+# Building Your Life Function
 
 [English](soov.md) · [Русский](soov.ru.md)
+
+See your life as a whole: when you developed, which turning points changed its direction, and which periods repeat. A visual chart helps connect individual events, notice patterns, and better understand what supports your development. From this picture, it becomes easier to see what you want to continue and what you want to change.
+
+![Life Function charts: parents’ histories and the person’s history alongside a calculated curve](../../assets/life-function.png)
+
+Without an outside perspective, it can be difficult to see how far you have come. What have you created? When did new possibilities emerge? Which encounters, decisions, and changes started a period of growth? Where did a familiar story repeat?
+
+The Life Function brings this path together in a visual chart. It reveals rises, declines, long periods of stability, and turning points. Each part of the chart is grounded in concrete events and results: family, relationships, work, learning, creativity, and your contribution to other people’s lives.
+
+You reconstruct your history manually or from a conversation transcript. You compare periods and explore possible connections between events and changes in your life. If you choose, you can add your parents’ histories to see similarities and differences: what repeats, and where you are already making your own path.
+
+The most useful part of this work is continuing the chart. What new understanding could help you change the usual course of events? Which decisions and actions follow from it? What do you want to create in the next period of your life?
+
+The past gives you material for understanding. The future remains open — you gradually fill it with your decisions and results.
+
+[Detailed page and chart (Russian)](https://app.imt.dev/artifacts/life-function/)
+
+The idea emerged while completing the homework for seminar AF2.8. The former name was SOOV / СООВ. The image shows the original prototype; chart building has not yet been ported to the separate public application.
+
+## Current public version
 
 SOOV preceded Longevity. Its original screen supported manual life-event entry and extraction from a transcript. That screen was identified in [Longevity's source](https://github.com/KiteTools/longevity-webmcp); it belongs to the project's earlier event workspace, before the later model mode.
 

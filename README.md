@@ -75,7 +75,7 @@ The workflows grew out of personal learning and IMT practice. Method-specific id
 - **Portable workflows:** eleven skills run from supplied material with an AI assistant and the tools each task needs. The expert-analysis workflow includes Python helpers; SVG and image outputs need a rendering tool.
 - **A local runtime:** Personal Daily Assistant includes an installable OpenClaw/Telegram package. Its bundled snapshot is documented; account setup and live verification happen on your own machine.
 - **An external app workflow:** Longevity Intake connects to [Longevity](https://github.com/KiteTools/longevity-webmcp); the application is maintained in its own repository.
-- **Separate applications:** [SOOV](https://github.com/KiteTools/soov) provides a local life-event timeline; [Personal Cabinet](https://github.com/KiteTools/selfdev-cabinet) provides application source and setup for your own accounts. Their [integration guides](docs/integrations/lk-sendpulse.md) explain the dependencies; hosted services are not bundled here.
+- **Separate applications:** [Building Your Life Function](https://github.com/KiteTools/soov) provides a local life-event timeline; [Personal Cabinet](https://github.com/KiteTools/selfdev-cabinet) provides application source and setup for your own accounts. Their [integration guides](docs/integrations/lk-sendpulse.md) explain the dependencies; hosted services are not bundled here.
 
 Prism is an external writing tool. It is not packaged or reimplemented in this collection.
 
