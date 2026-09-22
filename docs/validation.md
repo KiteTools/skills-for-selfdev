@@ -42,7 +42,7 @@ The fictional SVG example was rendered and compared with its source. The intervi
 - Medical validity of a conditional life model.
 - Compatibility with every AI host, OpenClaw release, or operating system.
 - A working Telegram connection, activated schedules, or successful live delivery on your machine.
-- Deployed LK/SendPulse integration or a migrated SOOV application.
+- Live Personal Cabinet/SendPulse integration on new accounts or SOOV compatibility with legacy data. The separate applications publish their own tests in their respective repositories.
 - New images or reports produced in a later user session without inspecting their output.
 
 The personal assistant is an adapted August 2026 snapshot with primarily Russian dialogue. Live configuration remains a separate, explicit setup step. Keep private working data outside this checkout.

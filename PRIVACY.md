@@ -17,7 +17,7 @@ Skill instructions, reusable helpers, empty templates, original illustrations, a
 | Run local parsers or renderers | Read their arguments; outputs stay in the chosen directory unless you send them elsewhere |
 | Generate images or use speech services | The selected image or speech provider may receive the supplied material |
 | Use the daily assistant | Your local runtime and Telegram/OpenClaw configuration handle the messages |
-| Use Longevity or LK/SendPulse | Read that application's current privacy boundary before submitting information |
+| Use Longevity or Personal Cabinet/SendPulse | Read that application's current privacy boundary before submitting information |
 
 Local output does not imply local AI inference. A skill cannot override a provider's retention policy. Browser and speech tools can also have separate data routes.
 

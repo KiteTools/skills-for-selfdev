@@ -52,7 +52,7 @@ See the official [skills documentation](https://developers.openai.com/codex/skil
 | Optional session posters | An image-generation tool; do not imply it is installed automatically |
 | Personal daily assistant | Python, Node.js, OpenClaw, a Telegram bot, and private local storage; see its installation contract |
 | Longevity intake | The external app; supported browser-agent tools for automated interaction, or manual entry |
-| LK + SendPulse | Your own deployed LK and configured accounts; see the integration guide |
+| Personal Cabinet + SendPulse | Your own deployed Personal Cabinet and configured accounts; see the integration guide |
 
 ## Your first ten minutes
 

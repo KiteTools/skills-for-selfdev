@@ -2,9 +2,9 @@
 
 [English](lk-sendpulse.md) · [Русский](lk-sendpulse.ru.md)
 
-The IMT personal cabinet (**ЛК**) connects consultation notes, daily journals and a Telegram bot. Its purpose is to keep the ideas a person reviewed with their consultant available during the period between sessions.
+The Personal Cabinet (Личный кабинет) connects consultation notes, daily journals and a Telegram bot. Its purpose is to keep the ideas a person reviewed with their consultant available during the period between sessions.
 
-This is an **integration guide for an existing application**, not a bundled application or a working connector supplied by this repository.
+This collection keeps the integration overview and user guide. The application source is a separate distribution: **[KiteTools/selfdev-cabinet](https://github.com/KiteTools/selfdev-cabinet)**. It supplies the application and setup tools; it does not supply hosted accounts or a verified live deployment.
 
 **Read the [complete cabinet guide](../guides/lk-guide.md)** for all seven tabs, everyday scenarios, data flows and troubleshooting. It is published from the existing application's guide; it does not grant service access.
 
@@ -27,7 +27,7 @@ The cabinet also provides a journal, an analysis history, a registry of working 
 
 ## Before you use it
 
-You need access to a configured cabinet deployment and its Telegram bot. Start that bot with `/start` so your identity can be linked to your records, then open the cabinet and complete its Telegram Login Widget flow. Installing these skills does not grant an account or access to someone else's cabinet.
+You need access to a configured cabinet deployment and its Telegram bot. In SendPulse mode start that bot with `/start`, open its contact-aware application link, and complete Telegram login. The server verifies that your signed Telegram identity belongs to that SendPulse bot contact before reading its variables or creating a session. Local transport also requires Telegram login but does not require SendPulse. Installing these skills does not grant an account or access to someone else's cabinet.
 
 The service operator must provision the application, storage, Telegram/SendPulse integration, AI processing and any email delivery used by the deployment. Credentials belong in the service's private configuration. This collection supplies none of those accounts, tokens or operational services.
 
@@ -47,14 +47,16 @@ The service operator must provision the application, storage, Telegram/SendPulse
 
 Unlike this public skills repository, the cabinet stores personal records and connects external services. Use your own deployment or the service account your operator provides. Verify its retention, sharing and access settings before uploading a transcript. Do not publish real examples, contact identifiers, screenshots of private records or credentials in issues and pull requests.
 
-The guide describes the reviewed cabinet workflow. It does not redistribute the app, promise a public signup route, or assume an agent has SendPulse access. For a standalone local assistant package, see [Personal Daily Assistant](../skills/personal-daily-assistant.md).
+The guide describes the reviewed workflow; access and actual behavior depend on the configured deployment. The separate source distribution does not grant access to an existing service or assume an agent has SendPulse credentials. For a standalone local assistant package, see [Personal Daily Assistant](../skills/personal-daily-assistant.md).
 
-## Make it independently deployable
+## Install your own Personal Cabinet
 
-The reviewed source uses a static interface, Netlify Functions, Neon/Postgres, Telegram authentication, SendPulse and an AI API; SMTP handles optional email delivery. The app includes database migrations and a configuration example. A reproducible release must also document the bot-side flows, variable mappings, callbacks and account setup that do not come from installing an AI skill.
+The [standalone repository](https://github.com/KiteTools/selfdev-cabinet) packages a clean static client and Netlify Functions, Neon/PostgreSQL migrations, Telegram login, optional OpenAI processing, and optional SMTP email. Use the **[operator installation guide](https://github.com/KiteTools/selfdev-cabinet/blob/main/docs/operator-install.md)** and **[SendPulse setup kit](https://github.com/KiteTools/selfdev-cabinet/blob/main/docs/sendpulse-setup.md)** with your own accounts and an empty database.
 
-The proposed first milestone is a clean public app repository that another operator can deploy on the same stack with their own accounts and an empty database. Keep that milestone small. Then separate the cabinet's data and processing from a SendPulse adapter, so another transport can be added without rewriting the cabinet.
+The implementation includes environment setup/checking, migration planning and explicit application, a restricted static build, and a transport facade with `sendpulse` and `local` adapters. `local` saves in the application database and explicitly does not deliver to a bot. SendPulse mode requires the operator's client credentials and bot ID. The public login checks contact ownership; SMTP copies are opt-in, and the application does not push starter content to a contact merely because someone logged in.
 
-**Neither milestone is implemented by this documentation release.** See the [portability plan](portable-apps.md#lk) for the package contents, login choices and a concrete first-user check.
+The setup kit documents exact variables, inbound endpoints, authentication headers, fictional payloads, and manual flow reconstruction. It contains no private bot export. The operator still configures schedules, voice transcription, AI-agent instructions, and the flow's error branches in SendPulse.
+
+**Delivery status:** source and setup documentation are implemented; deployment and the full loop on a new operator's accounts have not been live-verified. An outgoing queue, delivery acknowledgments, universal deduplication, a direct Telegram transport, and migration of an existing account's complete data are not implemented. Review the [portability design](portable-apps.md#lk) for those later milestones and run the installation guide's acceptance walkthrough before inviting users.
 
 [Catalog](../catalog.md) · [Skills for Selfdev](../../README.md)

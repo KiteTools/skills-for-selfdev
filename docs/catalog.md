@@ -35,7 +35,7 @@ The interview skill includes deterministic helpers. Notes and transcript cleanup
 
 [Personal Daily Assistant](skills/personal-daily-assistant.md) is the larger package: an opt-in OpenClaw/Telegram runtime with a journal, morning and evening dialogue, and weekly review. It needs a private workspace and your own service setup. The bundled dialogue is primarily Russian.
 
-[LK + SendPulse](integrations/lk-sendpulse.md) is a separate integration guide for an existing personal cabinet and bot. The hosted application and accounts are not part of this repository.
+[Personal Cabinet + SendPulse](integrations/lk-sendpulse.md) explains the workflow and links to the [standalone application and installation tools](https://github.com/KiteTools/selfdev-cabinet). [SOOV](https://github.com/KiteTools/soov) is a separate local event app. Hosted services and accounts are not part of this skills repository.
 
 ## Explore events and models
 

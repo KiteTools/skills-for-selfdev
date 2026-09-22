@@ -61,11 +61,11 @@ The workflows grew out of personal learning and IMT practice. Method-specific id
 - **Portable workflows:** eight skills run from supplied material with an AI assistant and the tools each task needs. The expert-analysis workflow includes Python helpers; SVG and image outputs need a rendering tool.
 - **A local runtime:** Personal Daily Assistant includes an installable OpenClaw/Telegram package. Its bundled snapshot is documented; account setup and live verification happen on your own machine.
 - **An external app workflow:** Longevity Intake connects to [Longevity](https://github.com/KiteTools/longevity-webmcp); the application is maintained in its own repository.
-- **Integration guides:** [LK + SendPulse](docs/integrations/lk-sendpulse.md) and [SOOV / СООВ](docs/integrations/soov.md) explain their role and dependencies. Their deployed services are not bundled here.
+- **Separate applications:** [SOOV](https://github.com/KiteTools/soov) provides a local life-event timeline; [Personal Cabinet](https://github.com/KiteTools/selfdev-cabinet) provides application source and setup for your own accounts. Their [integration guides](docs/integrations/lk-sendpulse.md) explain the dependencies; hosted services are not bundled here.
 
 Prism is an external writing tool. It is not packaged or reimplemented in this collection.
 
-For the cabinet's everyday workflow, read the [complete user guide](docs/guides/lk-guide.md). The [SOOV and cabinet portability plan](docs/integrations/portable-apps.md) describes how to turn these existing tools into independent distributions; it is a proposal, not an application release. All visitor guides and skill descriptions are also available in [Russian](README.ru.md).
+For the Personal Cabinet's everyday workflow, read the [complete user guide](docs/guides/lk-guide.md); to deploy it, use the separate [operator installation guide](https://github.com/KiteTools/selfdev-cabinet/blob/main/docs/operator-install.md) and [SendPulse setup kit](https://github.com/KiteTools/selfdev-cabinet/blob/main/docs/sendpulse-setup.md). The [portability plan](docs/integrations/portable-apps.md) distinguishes the implemented source packages from future delivery queues, adapters, and migration work. Live setup on your own accounts still needs verification. All visitor guides and skill descriptions are also available in [Russian](README.ru.md).
 
 ## Private by design of the package
 

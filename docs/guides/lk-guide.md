@@ -1,10 +1,10 @@
-# Guide to the IMT personal cabinet
+# Guide to the IMT Personal Cabinet
 
 [English](lk-guide.md) · [Русский](lk-guide.ru.md)
 
-This guide describes an existing version of the personal cabinet (LK). The interface and integrations depend on the deployment. Publishing this guide does not include the application's source code or provide access to a cabinet or its accounts. Russian interface labels are retained alongside their English meanings to help you find the controls. “Working pattern” translates the interface term «связка».
+This guide describes the existing SendPulse-based Personal Cabinet workflow. The interface and integrations depend on the deployment; the text is a user guide, not a live-service verification report. The [standalone source and installation guide](https://github.com/KiteTools/selfdev-cabinet/blob/main/docs/operator-install.md) provide your own setup. The new `local` transport does not deliver bot messages; bot-dependent parts of this guide require SendPulse configuration. No access to another operator's accounts is provided. Russian interface labels are retained alongside their English meanings to help you find the controls. “Working pattern” translates the interface term «связка».
 
-[LK and SendPulse: integration](../integrations/lk-sendpulse.md) · [Portable applications](../integrations/portable-apps.md)
+[Personal Cabinet and SendPulse: integration](../integrations/lk-sendpulse.md) · [Portable applications](../integrations/portable-apps.md)
 
 This document is a simple map of the personal cabinet: what it contains, what each tab is for, where information goes, and how the parts work together.
 
