@@ -1,0 +1,37 @@
+{
+  "name": "skills-for-selfdev",
+  "version": "0.1.0",
+  "description": "AI skills for self-development: reflection, learning, journaling, life events, and a personal daily assistant.",
+  "author": {
+    "name": "KiteTools",
+    "url": "https://github.com/KiteTools"
+  },
+  "homepage": "https://github.com/KiteTools/skills-for-selfdev",
+  "repository": "https://github.com/KiteTools/skills-for-selfdev",
+  "license": "MIT",
+  "keywords": [
+    "skills-for-selfdev",
+    "self-development",
+    "agent-skills",
+    "reflection",
+    "journaling",
+    "learning",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Skills for Selfdev",
+    "shortDescription": "Reflect, learn, and choose your next step.",
+    "longDescription": "AI skills for self-development: reflection, learning, journaling, life events, and a personal daily assistant.",
+    "developerName": "KiteTools",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Help me choose a selfdev skill for my next step."
+    ],
+    "brandColor": "#6957D5"
+  }
+}

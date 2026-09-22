@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+<title id="title">Fictional diagram: observation, experiment, and review</title>
+<desc id="desc">Observation leads to experiment, which leads to review. Review also returns to experiment. A source-faithful vector illustration.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#334c49"/></marker></defs>
+<rect width="960" height="360" rx="20" fill="#f7f5ee"/>
+<text x="56" y="51" font-family="sans-serif" font-size="13" letter-spacing="2" fill="#65726d">FICTIONAL EXAMPLE · EDITABLE SVG</text>
+<g fill="#ffffff" stroke="#334c49" stroke-width="2"><rect x="55" y="105" width="230" height="90" rx="14"/><rect x="365" y="105" width="230" height="90" rx="14"/><rect x="675" y="105" width="230" height="90" rx="14"/></g>
+<g font-family="sans-serif" font-size="25" fill="#213b36" text-anchor="middle"><text x="170" y="160">Observation</text><text x="480" y="160">Experiment</text><text x="790" y="160">Review</text></g>
+<g fill="none" stroke="#334c49" stroke-width="2.5" marker-end="url(#arrow)"><path d="M285 150H354"/><path d="M595 150H664"/><path d="M790 195V262H480V207"/></g>
+<text x="55" y="321" font-family="sans-serif" font-size="13" fill="#65726d">Three labels. Three relationships. No invented measurement.</text>
+</svg>

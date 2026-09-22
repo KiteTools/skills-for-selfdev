@@ -1,0 +1,34 @@
+name: Check public package
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate public package
+        run: python3 scripts/check_repo.py
+      - name: Test safe skill installation
+        run: python3 -m unittest discover -s tests -v
+      - name: Test interview pipeline
+        run: python3 -m unittest discover -s skills/analyze-expert-interview/tests -v
+      - name: Test SVG checker
+        run: python3 -m unittest discover -s skills/reconstruct-svg/tests -v
+      - name: Test daily assistant installation
+        run: python3 -m unittest discover -s skills/personal-daily-assistant/tests -v
+      - name: Test daily assistant runtime
+        run: python3 -m unittest discover -s skills/personal-daily-assistant/assets/runtime/tests -v
+      - name: Test daily assistant transport
+        run: node --test skills/personal-daily-assistant/assets/runtime/openclaw-plugins/personal-daily-transport/test/*.test.mjs

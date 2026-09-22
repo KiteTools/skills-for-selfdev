@@ -1,0 +1,53 @@
+{
+  "id": "personal-daily-transport",
+  "activation": {
+    "onStartup": true
+  },
+  "name": "Personal Daily Transport",
+  "description": "Handles deterministic personal-daily Telegram transitions before a model turn.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "ownerTelegramId",
+      "repoRoot",
+      "dataDir",
+      "timezone",
+      "summariesDir",
+      "openclawSessionsDir",
+      "threadCleanupCutoff"
+    ],
+    "properties": {
+      "technicalCleanupEnabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Opt in to deleting recognized technical Telegram messages and archiving technical Codex threads. Disabled unless explicitly enabled."
+      },
+      "ownerTelegramId": {
+        "type": "string"
+      },
+      "repoRoot": {
+        "type": "string"
+      },
+      "dataDir": {
+        "type": "string"
+      },
+      "timezone": {
+        "type": "string"
+      },
+      "summariesDir": {
+        "type": "string"
+      },
+      "openclawSessionsDir": {
+        "type": "string"
+      },
+      "threadCleanupCutoff": {
+        "type": "string"
+      },
+      "pythonBin": {
+        "type": "string",
+        "default": "python3"
+      }
+    }
+  }
+}

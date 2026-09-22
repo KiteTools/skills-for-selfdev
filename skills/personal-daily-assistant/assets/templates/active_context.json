@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "draft",
+  "focus_until": "2099-12-31",
+  "active_understanding": "REPLACE_WITH_YOUR_ACTIVE_UNDERSTANDING",
+  "l1": {
+    "status": "draft",
+    "text": "REPLACE_WITH_YOUR_L1"
+  },
+  "questions": {
+    "morning": "REPLACE_WITH_YOUR_MORNING_1_TO_1_QUESTION",
+    "evening": "REPLACE_WITH_YOUR_EVENING_1_TO_1_QUESTION"
+  },
+  "warning_patterns": [
+    "REPLACE_WITH_YOUR_WARNING_PATTERN"
+  ],
+  "viability_reflections": {
+    "affirmations": [
+      "REPLACE_WITH_YOUR_AFFIRMATION"
+    ],
+    "understandings": [
+      "REPLACE_WITH_YOUR_UNDERSTANDING"
+    ]
+  },
+  "focus_groups": [
+    {
+      "id": "primary",
+      "label": "REPLACE_WITH_YOUR_FOCUS_GROUP_LABEL",
+      "l2": "REPLACE_WITH_YOUR_L2",
+      "period_focus": "REPLACE_WITH_YOUR_PERIOD_FOCUS"
+    }
+  ],
+  "task_choices": [
+    {
+      "number": 1,
+      "id": "task-001",
+      "group_id": "primary",
+      "status": "active",
+      "label": "REPLACE_WITH_YOUR_TASK",
+      "l2": "REPLACE_WITH_YOUR_L2",
+      "period_focus": "REPLACE_WITH_YOUR_PERIOD_FOCUS",
+      "day_result": "REPLACE_WITH_YOUR_DAY_RESULT",
+      "first_step": "REPLACE_WITH_YOUR_FIRST_STEP",
+      "duration_minutes": 30
+    }
+  ]
+}

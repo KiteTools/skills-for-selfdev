@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenClaw Personal Daily Assistant"
+  short_description: "Install a private text-only daily assistant"
+  default_prompt: "Use $personal-daily-assistant to install and verify my private Telegram daily assistant through OpenClaw."

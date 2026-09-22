@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+<title id="title">Original fictional source sketch</title><desc id="desc">Observation points to Experiment, Experiment points to Review, and Review returns to Experiment.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#625e54"/></marker></defs>
+<rect width="960" height="360" fill="#fffdf7"/>
+<text x="45" y="45" font-family="sans-serif" font-size="16" fill="#625e54">Fictional source sketch</text>
+<g stroke="#625e54" stroke-width="2" fill="none"><path d="M46 110L292 102L286 194L53 200Z"/><path d="M361 108L593 117L600 191L365 198Z"/><path d="M677 104L910 110L899 197L672 190Z"/></g>
+<g font-family="serif" font-style="italic" font-size="26" fill="#625e54" text-anchor="middle"><text x="170" y="161">Observation</text><text x="480" y="165">Experiment</text><text x="790" y="163">Review</text></g>
+<g stroke="#625e54" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M290 150L350 154"/><path d="M599 148L661 152"/><path d="M785 198L791 268L480 264L482 207"/></g>
+</svg>
