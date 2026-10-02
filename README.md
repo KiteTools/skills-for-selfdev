@@ -38,6 +38,7 @@ For example: reflect on a consultation → keep an accepted understanding → ch
 | Edit a diagram trapped in a scan | [SVG reconstruction](docs/skills/reconstruct-svg.md) | An editable diagram checked against the original |
 | Configure an assistant around my focus | [Personal Codex Assistant](docs/skills/personal-codex-assistant.md) | Clean personal context, working agreements and evidence of results |
 | Explore one reaction | [GoR reflection](docs/skills/reflect-on-reaction.md) | Episode exploration, examined understanding and a choice of my own |
+| Understand the actual day | [Cross-device day review](docs/skills/cross-device-day-review.md) | Union intervals, separate agent time and explicit gaps |
 | Make sense of the week | [Weekly Review](docs/skills/weekly-review.md) | Intentions, experience and results with explicit gaps |
 | Build a gentle daily rhythm | [Personal daily assistant](docs/skills/personal-daily-assistant.md) | An opt-in local Telegram assistant with a private journal and retrospectives |
 | Put life events in order | [Life events](docs/skills/life-events.md) | A reviewable timeline from manual notes or a transcript |

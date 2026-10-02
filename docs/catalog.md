@@ -2,7 +2,7 @@
 
 [English](catalog.md) · [Русский](catalog.ru.md)
 
-Thirteen focused workflows for reflection, learning, journaling, and working with life events. Choose by the result you want. Each page explains what to provide, what comes back, and which tools it needs.
+Fourteen focused workflows for reflection, learning, journaling, and working with life events. Choose by the result you want. Each page explains what to provide, what comes back, and which tools it needs.
 
 ## First, choose the scope
 
@@ -21,6 +21,7 @@ For ongoing work, [Personal Codex Assistant](skills/personal-codex-assistant.md)
 | [Disco Mirror](skills/disco-mirror.md) | Recent concrete episodes and your own answers | A working portrait of inner voices, counterexamples, and a small experiment |
 | [Session reflection](skills/reflect-on-session.md) | Your consultation transcript; optional existing context | Source-linked understanding, adoption status, chosen actions, optional visuals |
 | [GoR reaction reflection](skills/reflect-on-reaction.md) | One concrete episode and your answers | Examined understanding, a voluntary decision and a corresponding action |
+| [Cross-device day review](skills/cross-device-day-review.md) | Reviewed JSON from selected exports and notes | Sorted episodes, interval union, separate machine time and gaps |
 | [Weekly Review](skills/weekly-review.md) | Selected weekly notes, intentions and outcome evidence | Experience, patterns and gaps; chosen adjustments for the next week |
 | [Evening Ten](skills/evening-ten.md) | A day summary, current goals, and optional previous suggestions | Ten varied possibilities grounded in the day; a partial set if evidence is insufficient |
 

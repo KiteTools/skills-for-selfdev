@@ -15,6 +15,7 @@ The prompt asks the agent to inspect your environment, learn your preferences, c
 | [Personal context](../skills/personal-codex-assistant.md) | Direction and evidence-based results | Instructions, blank JSON, AGENTS.md and CLAUDE.md blocks, optional journal; no service |
 | [Daily assistant](../skills/personal-daily-assistant.md) | Morning, ideas, successes, state and evening in Telegram | Python runtime, OpenClaw plugin, installer, verifier, side-by-side upgrade and tests |
 | [Evening Ten](../skills/evening-ten.md) | Find fresh possibilities | On-demand skill and prepared-record import; no automatic collector or generator |
+| [Cross-device day review](../skills/cross-device-day-review.md) | Prepare evidence for reflection | Offline normalized-JSON CLI; no collectors or automatic runtime import |
 | [Weekly review](../skills/weekly-review.md) | Connect intentions, understanding, action and results | On-demand evidence review with overlap handling and gaps |
 | [Reaction reflection](../skills/reflect-on-reaction.md) | Explore a concrete reaction | Separate optional practice, not automatically invoked by a low state rating |
 | [Session reflection](../skills/reflect-on-session.md) | Keep chosen understandings from a consultation | Uses supplied material; transfer into context requires your choice |

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "files": [
+    "LICENSE",
+    "skills/cross-device-day-review/SKILL.md",
+    "skills/cross-device-day-review/examples/README.md",
+    "skills/cross-device-day-review/examples/config.json",
+    "skills/cross-device-day-review/examples/day.json",
+    "skills/cross-device-day-review/references/adapters.md",
+    "skills/cross-device-day-review/references/config.schema.json",
+    "skills/cross-device-day-review/references/input.md",
+    "skills/cross-device-day-review/references/input.schema.json",
+    "skills/cross-device-day-review/scripts/day_review.py"
+  ]
+}

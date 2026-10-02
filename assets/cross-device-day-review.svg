@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+<title id="title">Анализ дня: пример объединения интервалов</title><desc id="desc">Синтетический пример. Компьютер, телефон и заметки дают общий интервал занятия, пересечения не удваиваются. Машинная работа учитывается отдельно.</desc>
+<rect width="1200" height="440" rx="20" fill="#f2efe6"/>
+<g font-family="Arial, sans-serif" fill="#233a35"><text x="42" y="56" font-size="15" letter-spacing="2">ФАКТЫ ДНЯ → ПОНИМАНИЕ → ВЫБРАННЫЙ ФОКУС</text><text x="42" y="102" font-size="32" font-weight="bold">Один день. Несколько источников.</text>
+<text x="42" y="161" font-size="20">Компьютер</text><text x="42" y="211" font-size="20">Телефон</text><text x="42" y="261" font-size="20">Заметки встречи</text><text x="42" y="319" font-size="20" font-weight="bold">Одно занятие</text>
+<rect x="290" y="141" width="450" height="28" rx="7" fill="#456e60"/><rect x="515" y="191" width="375" height="28" rx="7" fill="#94b5a6"/><rect x="365" y="241" width="225" height="28" rx="7" fill="#baba9c"/><rect x="290" y="293" width="600" height="35" rx="7" fill="#233a35"/>
+<text x="320" y="317" fill="#fff" font-size="18">80 минут после объединения</text><text x="290" y="358" font-size="16">09:00</text><text x="847" y="358" font-size="16">10:20</text>
+<path d="M940 137V350" stroke="#d5d6ca" stroke-width="2"/><text x="970" y="165" font-size="18">Агент отдельно</text><text x="970" y="214" font-size="27" font-weight="bold">90 мин</text><text x="970" y="242" font-size="15">сумма заданий</text><text x="970" y="286" font-size="27" font-weight="bold">60 мин</text><text x="970" y="315" font-size="15">интервал работы</text>
+<text x="42" y="406" font-size="16" fill="#626f65">Синтетические данные · отсутствие записи не означает ноль · время агента не прибавляется к твоему</text></g></svg>

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "date": "2030-01-15",
+  "sources": [
+    {
+      "id": "computer",
+      "status": "ready",
+      "records": [
+        {
+          "id": "reading",
+          "episode": "learning",
+          "label": "Учебная встреча и заметки",
+          "category": "learning",
+          "start": "2030-01-15T09:00:00Z",
+          "end": "2030-01-15T10:00:00Z"
+        },
+        {
+          "id": "draft",
+          "episode": "writing",
+          "label": "Подготовка заметки",
+          "category": "creation",
+          "start": "2030-01-15T10:30:00Z",
+          "end": "2030-01-15T11:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "phone",
+      "status": "ready",
+      "records": [
+        {
+          "id": "call",
+          "episode": "learning",
+          "label": "Учебная встреча и заметки",
+          "category": "learning",
+          "start": "2030-01-15T09:30:00Z",
+          "end": "2030-01-15T10:20:00Z"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "status": "partial",
+      "records": [
+        {
+          "id": "meeting-notes",
+          "episode": "learning",
+          "label": "Учебная встреча и заметки",
+          "category": "learning",
+          "start": "2030-01-15T09:10:00Z",
+          "end": "2030-01-15T09:40:00Z"
+        },
+        {
+          "id": "walk",
+          "episode": "walk",
+          "label": "Прогулка",
+          "category": "rest",
+          "start": "2030-01-15T12:00:00Z",
+          "end": "2030-01-15T12:20:00Z"
+        }
+      ]
+    },
+    {
+      "id": "agent",
+      "status": "ready",
+      "records": [
+        {
+          "id": "job-one",
+          "label": "Сборка синтетического примера",
+          "start": "2030-01-15T09:00:00Z",
+          "end": "2030-01-15T10:00:00Z"
+        },
+        {
+          "id": "job-two",
+          "label": "Проверка синтетического примера",
+          "start": "2030-01-15T09:15:00Z",
+          "end": "2030-01-15T09:45:00Z"
+        }
+      ]
+    }
+  ],
+  "unknown_activities": [
+    {
+      "id": "conversation",
+      "label": "Короткий разговор без отметок времени",
+      "category": "connection",
+      "source_id": "notes"
+    }
+  ],
+  "intentions": [
+    {
+      "label": "Понять учебный материал",
+      "category": "learning"
+    },
+    {
+      "label": "Подготовить заметку",
+      "category": "creation"
+    },
+    {
+      "label": "Продвинуть выбранный проект",
+      "category": "project"
+    }
+  ]
+}
