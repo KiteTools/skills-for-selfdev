@@ -1,6 +1,6 @@
 ---
 name: personal-codex-assistant
-description: Set up or use a private Codex work context with user-defined direction, current focus, evidence-based task completion and optional vitality journaling. Use for a personal Codex assistant or project-scoped alignment rules; no Telegram or scheduler is required.
+description: Set up or use a private Codex or Claude Code work context with user-defined direction, current focus, evidence-based task completion and optional vitality journaling. Use for a personal coding-agent assistant or project-scoped alignment rules; no Telegram or scheduler is required.
 ---
 
 # Personal Codex Assistant
@@ -9,9 +9,9 @@ Help the user connect a concrete task to their chosen direction and notice their
 
 ## Set up only the requested scope
 
-For setup, read [the merge procedure](references/setup.md). Use [the blank context](assets/templates/context.json) and [the scoped AGENTS block](assets/templates/agents-block.md). Discover already designated context before asking the user to repeat it. Never import personal context from an unrelated workspace or raw agent history.
+For setup, read [the merge procedure](references/setup.md). Use [the blank context](assets/templates/context.json) and the host-specific scoped block: [AGENTS.md for Codex](assets/templates/agents-block.md) or [CLAUDE.md for Claude Code](assets/templates/claude-block.md). Keep the historic skill name and `.personal-codex` data paths for compatibility; Claude Code does not require Codex to be installed. Discover already designated context before asking the user to repeat it. Never import personal context from an unrelated workspace or raw agent history.
 
-A request to design or preview a setup produces a proposal. An explicit request to set it up in a named workspace authorizes the described local edits; do not ask again. Without a selected storage location, prepare the concrete block and proposed paths first; obtain the missing location before writing personal values. Keep the private context and journal out of the public skills checkout. Do not change global Codex settings, install other skills, schedule jobs, or configure messaging.
+A request to design or preview a setup produces a proposal. An explicit request to set it up in a named workspace authorizes the described local edits; do not ask again. Without a selected storage location, prepare the concrete block and proposed paths first; obtain the missing location before writing personal values. Keep the private context and journal out of the public skills checkout. Do not change global agent settings, install other skills, schedule jobs, or configure messaging.
 
 ## Use the context
 
@@ -45,4 +45,4 @@ When journaling has been enabled, append the answer according to [the journal co
 
 ## Keep the system portable
 
-No other installed skill, bot, activity recorder, API key, database, global configuration or background process is required. The context is a local JSON document and the optional journal is append-only JSONL, operated by Codex with ordinary file tools. This package supplies instructions and templates, not an autonomous service. Existing privacy and access constraints still apply: local files used in a Codex conversation can become model input.
+No other installed skill, bot, activity recorder, API key, database, global configuration or background process is required. The context is a local JSON document and the optional journal is append-only JSONL, operated by the chosen agent with ordinary file tools. This package supplies instructions and templates, not an autonomous service. Existing privacy and access constraints still apply: local files used in a conversation with the configured agent can become model input.

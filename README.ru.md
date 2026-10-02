@@ -1,5 +1,7 @@
 # Skills for Selfdev — скиллы для саморазвития
 
+**Для Claude Code:** [собери ежедневного помощника — готовый промпт и карта компонентов](docs/guides/daily-assistant-claude-code.ru.md).
+
 **Превратить опыт в понимание, а понимание — в выбранный тобой следующий шаг.**
 
 [English](README.md) · [Русский](README.ru.md) · [Установка](docs/getting-started.ru.md) · [Каталог](docs/catalog.ru.md) · [Данные и приватность](PRIVACY.ru.md)

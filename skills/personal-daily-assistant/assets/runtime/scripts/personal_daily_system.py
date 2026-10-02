@@ -2753,6 +2753,9 @@ class PersonalDailyService:
             )
         stored = copy.deepcopy(stored)
         stored.pop("buttons", None)
+        l1_snapshot = pending["payload"].get("l1_snapshot")
+        if isinstance(l1_snapshot, str) and l1_snapshot:
+            stored["text"] = self._morning_choice_prompt_text(l1_snapshot)
         expires_at = self._expires_at(now, 30 * 60)
         pending["expires_at"] = expires_at
         pending["payload"]["compact"] = True
@@ -3717,67 +3720,123 @@ class PersonalDailyService:
                 "expires_at": pending["expires_at"],
             }
 
+    def _morning_choice_prompt_text(self, l1_snapshot: str) -> str:
+        focus_until = date.fromisoformat(self.context["focus_until"])
+        focus_until_human = (
+            f"{focus_until.day} {RUSSIAN_MONTHS_GENITIVE[focus_until.month]}"
+        )
+        blocks = [f"L1 → {l1_snapshot}"]
+        for group in self.context["focus_groups"]:
+            blocks.append("\n".join([
+                group["label"],
+                f"L2 → {group['l2']}",
+                f"Фокус до {focus_until_human} → {group['period_focus']}",
+            ]))
+        return "\n\n".join(blocks) + (
+            "\n\nКакую задачу или идею выбираешь сегодня? Напиши своими словами. "
+            "Чтобы посмотреть текущий список, нажми или напиши «Показать задачи». "
+            "Если сегодня без фокус-задачи, ответь 0."
+        )
+
     def _morning_choices_response(
         self,
         state: dict[str, Any],
         pending: dict[str, Any],
         now: datetime,
     ) -> dict[str, Any]:
-        choices = _ordered_task_choices(
-            copy.deepcopy(self.context["task_choices"]),
-        )
-        groups = copy.deepcopy(self.context["focus_groups"])
-        focus_until = date.fromisoformat(self.context["focus_until"])
-        focus_until_human = (
-            f"{focus_until.day} "
-            f"{RUSSIAN_MONTHS_GENITIVE[focus_until.month]}"
-        )
+        choices = _ordered_task_choices(copy.deepcopy(self.context["task_choices"]))
         l1_snapshot = self.context["l1"]["text"]
-        blocks = [f"L1 → {l1_snapshot}"]
-        for group in groups:
-            blocks.append(
-                "\n".join(
-                    [
-                        group["label"],
-                        f"L2 → {group['l2']}",
-                        (
-                            f"Фокус до {focus_until_human} → "
-                            f"{group['period_focus']}"
-                        ),
-                    ]
-                )
-            )
-        blocks.append(
-            "Задачи:\n"
-            + "\n".join(
-                (
-                    f"{choice['number']}. "
-                    f"{'✅ ' if _task_is_completed(choice) else ''}"
-                    f"{choice['label']}"
-                )
-                for choice in choices
-            )
-        )
         pending["stage"] = "awaiting_task_choice"
         pending["payload"]["choices_snapshot"] = {
-            choice["id"]: copy.deepcopy(choice) for choice in choices
+            choice["id"]: choice for choice in choices
         }
         pending["payload"]["choice_order"] = [
             choice["id"] for choice in choices if not _task_is_completed(choice)
         ]
         pending["payload"]["l1_snapshot"] = l1_snapshot
         state["pending_interaction"] = pending
+        callback_data = f"pd:m:{now.strftime('%Y%m%d')}:catalog"
+        self._add_callbacks(
+            state, [callback_data], workflow="morning", now=now,
+            expires_in_seconds=30 * 60,
+            metadata={callback_data: {
+                "interaction_id": pending["interaction_id"],
+                "action": "show_catalog",
+            }},
+        )
         response = {
             "workflow": "morning",
             "next_stage": "awaiting_task_choice",
-            "text": "\n\n".join(blocks)
-            + (
-                "\n\nЧто выбираешь сегодня? Ответь одним или несколькими "
-                "номерами либо 0."
-            ),
+            "text": self._morning_choice_prompt_text(l1_snapshot),
+            "buttons": [self._button("Показать задачи", "catalog", callback_data)],
         }
         pending["payload"]["choice_response"] = copy.deepcopy(response)
         return response
+
+    def _morning_catalog_response(self, pending: dict[str, Any]) -> dict[str, Any]:
+        snapshots = pending.get("payload", {}).get("choices_snapshot")
+        if not isinstance(snapshots, dict):
+            return {"status": "stale", "text": "Снимок задач больше недоступен."}
+        choices = _ordered_task_choices([
+            choice for choice in snapshots.values() if isinstance(choice, dict)
+        ])
+        catalog = "\n".join(
+            f"{choice['number']}. "
+            f"{'✅ ' if _task_is_completed(choice) else ''}{choice['label']}"
+            for choice in choices
+        )
+        return {
+            "workflow": "morning",
+            "status": "shown",
+            "next_stage": "awaiting_task_choice",
+            "text": "Задачи:\n" + (catalog or "Список пока пуст.") + (
+                "\n\nВыбери задачу или идею своими словами. "
+                "Можно ответить одним или несколькими номерами либо 0."
+            ),
+        }
+
+    def _record_freeform_morning_choice(
+        self,
+        selected_text: str,
+        *,
+        source: dict[str, Any],
+        pending: dict[str, Any],
+    ) -> dict[str, Any]:
+        payload = pending.get("payload", {})
+        l1_snapshot = payload.get("l1_snapshot")
+        if not isinstance(l1_snapshot, str) or not l1_snapshot:
+            return {"status": "stale", "text": "Снимок лестницы больше недоступен."}
+        selection = selected_text.strip()
+        event = self.store.append_event({
+            "type": "morning_intent",
+            "idempotency_key": f"morning_intent:{pending['interaction_id']}",
+            "source": source,
+            "self_report": {
+                "no_focus": False,
+                "selection_mode": "freeform",
+                "selected_text": selection,
+                "morning_answer": payload.get("morning_answer"),
+                "control_answer": payload.get("control_answer"),
+            },
+            "description": selection,
+            "links": {
+                "active_context": str(self.context_path),
+                "choice_id": None, "choice_ids": [], "choice_numbers": [],
+                "l1": l1_snapshot, "l2": None, "period_focus": None,
+                "day_result": selection, "day_results": [selection],
+                "first_step": None, "first_steps": [],
+            },
+        })
+        stored_selection = event["description"]
+        stored_links = event.get("links", {})
+        return {
+            "status": "recorded", "event": event,
+            "day_result": stored_links.get("day_result"),
+            "day_results": stored_links.get("day_results", []),
+            "first_step": stored_links.get("first_step"),
+            "first_steps": stored_links.get("first_steps", []),
+            "text": f"Выбор на сегодня сохранён: {stored_selection}",
+        }
 
     def _record_morning_choice(
         self,
@@ -4127,8 +4186,30 @@ class PersonalDailyService:
                 return result
 
             if stage == "awaiting_task_choice":
+                if text.strip().casefold() == "показать задачи":
+                    return self._remember_reply(
+                        state, message_id, self._morning_catalog_response(pending)
+                    )
                 numbers = _parse_morning_choice_numbers(text)
-                if numbers is None or (0 in numbers and numbers != [0]):
+                if numbers is None:
+                    if re.fullmatch(r"\s*-\d+\s*", text):
+                        return {
+                            "status": "invalid",
+                            "text": "Номер задачи не может быть отрицательным.",
+                        }
+                    result = self._record_freeform_morning_choice(
+                        text, source={"channel": "telegram", "message_id": message_id},
+                        pending=pending,
+                    )
+                    if result.get("status") in {"recorded", "already_recorded"}:
+                        self._mark_completed(
+                            state, pending["interaction_id"],
+                            self._morning_completion(result["event"]),
+                        )
+                        state["pending_interaction"] = None
+                        self._remember_reply(state, message_id, result)
+                    return result
+                if 0 in numbers and numbers != [0]:
                     return {
                         "status": "invalid",
                         "text": (
@@ -4474,6 +4555,10 @@ class PersonalDailyService:
                         "status": "stale",
                         "text": "Этот утренний выбор больше не активен.",
                     }
+                if metadata.get("action") == "show_catalog":
+                    # A read-only view must still validate the active interaction
+                    # on every click; do not cache it as a completed callback.
+                    return self._morning_catalog_response(pending)
                 result = self._record_morning_choice(
                     metadata.get("choice_id"),
                     source={

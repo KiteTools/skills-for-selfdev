@@ -79,11 +79,12 @@ export function shouldCreateContinuation({ route }) {
   ) {
     return false;
   }
-  if (
-    route.pendingStage === "awaiting_task_choice" &&
-    /^(?:0|\d+(?:(?:\s*(?:,|;|и)\s*|\s+)\d+)*)$/iu.test(route.text)
-  ) {
-    return false;
+  if (route.pendingStage === "awaiting_task_choice") {
+    // A recorded intention is not permission to execute it. Only an explicit
+    // request addressed to the assistant can open an additional model turn.
+    return /^(?:пожалуйста[,\s]+)?(?:помоги|сделай|подготовь|разберись|создай|найди|проверь|объясни|ответь|посмотри|давай)(?=$|[\s,.:!?])/iu.test(
+      route.text.trim(),
+    );
   }
   return (
     /[?？]/u.test(route.text) ||

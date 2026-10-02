@@ -1,5 +1,7 @@
 # Skills for Selfdev
 
+**Using Claude Code?** [Build your daily assistant: copyable prompt and component map](docs/guides/daily-assistant-claude-code.md).
+
 **AI skills for self-development. Turn experience into understanding, and understanding into a next step you choose.**
 
 [Русский](README.ru.md) · [Start here](docs/getting-started.md) · [All skills](docs/catalog.md) · [Privacy](PRIVACY.md)

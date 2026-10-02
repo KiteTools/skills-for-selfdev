@@ -5,7 +5,7 @@ description: Use when installing, configuring, repairing, or verifying a private
 
 # OpenClaw Personal Daily Assistant
 
-Portable **v0.2.0** keeps the August 2026 journal/runtime base and adds selected
+Portable **v0.3.0** keeps the August 2026 journal/runtime base and adds selected
 September mechanics: optional idea discussion, explicit activity reports, and
 an optional prepared Evening Ten store/transport. It is a bounded modular
 adaptation, **not a copy of the latest private assistant**. The deterministic
@@ -40,6 +40,10 @@ infrastructure.
 9. Perform one live text-message smoke test in the owner's private Telegram
    chat. Do not report success unless the bot reply and local event readback
    both succeed.
+
+## Morning choice
+
+After the morning questions, ask for the owner’s step in their own words. Keep the numbered catalog behind “Показать задачи”. A free-form intention records `morning_intent` without creating or completing a catalog task. Existing numbers, 0 and task buttons remain supported. Recording an intention does not authorize the agent to execute it.
 
 ## Optional mechanics
 

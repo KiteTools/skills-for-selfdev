@@ -1,5 +1,15 @@
 # Scoped setup and safe merge
 
+## Host selection
+
+Use `AGENTS.md` and `assets/templates/agents-block.md` for Codex; use `CLAUDE.md` and `assets/templates/claude-block.md` for Claude Code. In the procedure below, “AGENTS file” means that selected host instruction file. Do not create both by default. Claude Code skills go in the selected project’s `.claude/skills/`; install only the selected folders with the root installer’s explicit `--dest`. The root plugin manifests and `agents/openai.yaml` are not Claude plugin configuration.
+
+Keep the existing `.personal-codex` storage name: it is a schema compatibility name, not a dependency on Codex. Both agents use the same context/journal contract when intentionally connected to one workspace. Designate a single writer; never enable competing writers or two parallel sources of truth. An existing OpenClaw context uses a different schema and cannot be replaced by this blank template.
+
+Claude Code loads `CLAUDE.md` as project instructions; there is no assumption that it automatically loads `AGENTS.md`. Scope rules to the selected private workspace, preserving existing imports and content. See the official [skills](https://code.claude.com/docs/en/skills) and [memory](https://code.claude.com/docs/en/memory) documentation.
+
+## Merge procedure
+
 1. Inspect the selected workspace's applicable AGENTS instructions and any context paths the user has designated. Do not scan the whole home directory. If an existing context system already serves the purpose, use it or propose a narrow adapter instead of creating a competing source of truth.
 2. Choose one instruction scope with the user: normally a named private workspace or its specific subdirectory. The default proposed files inside that scope are `.personal-codex/context.json` and `.personal-codex/journal.jsonl`. Resolve paths relative to the AGENTS file containing the block, not an arbitrary current working directory. Use another user-selected private directory when appropriate; substitute the two paths consistently in the block. Do not modify an ancestor/global AGENTS file to reach more projects.
 3. Prepare a diff showing the exact block, paths and context fields. Copy the blank JSON only when the target does not exist. Existing context is input, not a template to replace. Fill goals only from the user's statements. Confirm the person's timezone if dates or journaling need one; keep it null until known. A future review date is not a schedule.

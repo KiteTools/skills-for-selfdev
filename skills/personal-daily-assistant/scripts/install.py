@@ -185,7 +185,7 @@ def build_plan(options: InstallOptions) -> dict:
             item["env"]["PDS_EVENING_TEN_ENABLED"] = "1"
     return {
         "schema_version": 1,
-        "package_version": "0.2.0",
+        "package_version": "0.3.0",
         "features": {"evening_ten": options.evening_ten_enabled},
         "mode": "dry-run",
         "project_root": str(project),

@@ -7,9 +7,9 @@ the same life, not separate scoreboards. The top criterion is whether the owner
 wants to live more, while daily deltas remain contextual observations rather
 than verdicts on a task or goal.
 
-## Codex task alignment
+## Agent task alignment
 
-In the first substantive reply of a new Codex task, read
+In the first substantive reply of a new substantive agent task, read
 `context/active_context.md`. Show once:
 
 `L1 → relevant L2 → period focus → expected result`
@@ -36,7 +36,9 @@ This assistant accepts text and inline callbacks only. Do not pass attachments
 or incoming voice messages through recognition, and do not send audio replies.
 
 Route exact `утро` before pending-state handling. It opens a compact morning
-choice for 30 minutes. Accept several task numbers separated by conjunctions,
+choice for 30 minutes. Accept a step in the owner’s own words. Show the catalog
+only on “Показать задачи” (text or button); opening it is not a choice. A saved
+intention does not itself authorize execution. Accept several task numbers separated by conjunctions,
 commas, spaces or newlines; accept standalone `0` for no focus.
 
 If one message both answers a pending dialogue and contains a new independent

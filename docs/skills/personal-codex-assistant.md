@@ -1,14 +1,16 @@
 # Personal Codex Assistant
 
+**Using Claude Code?** [Build your daily assistant: copyable prompt and component map](../guides/daily-assistant-claude-code.md).
+
 **English** · [Русский](personal-codex-assistant.ru.md)
 
 ![A visual rhythm connecting context, work and reflection](../../assets/rhythm.png)
 
-**Keep your direction visible while Codex helps with real work.**
+**Keep your direction visible while Codex or Claude Code helps with real work.**
 
 You open a task to finish a small prototype. The assistant briefly connects that result to the focus you chose, helps complete the work, checks the result, then asks how the experience felt. Your answer can go into a private journal. A difficult experience does not erase a finished result; a good feeling does not prove that a task is complete.
 
-This standalone skill brings the personal context rules into Codex. It needs no Telegram bot, OpenClaw runtime or other installed skill.
+This standalone skill brings the personal context rules into Codex or Claude Code. It needs no Telegram bot, OpenClaw runtime or other installed skill.
 
 ## What it does
 

@@ -1,5 +1,7 @@
 # Personal Daily Assistant: a daily rhythm that keeps your context
 
+**Using Claude Code?** [Build your daily assistant: copyable prompt and component map](../guides/daily-assistant-claude-code.md).
+
 [English](personal-daily-assistant.md) · [Русский](personal-daily-assistant.ru.md)
 
 ![Illustration of the rhythm workflow](../../assets/rhythm.png)
@@ -9,6 +11,10 @@ Choose a meaningful next step in the morning, capture ideas and small successes 
 **Try it:**
 
 > Use personal-daily-assistant to inspect my setup and prepare a private installation plan. Use my chosen direction, focus, and daily questions. Show the dry run before activating schedules. Explain the optional Evening Ten bridge.
+
+## Update 0.3.0: choose a morning step in your own words
+
+After the morning questions, enter your own next step. “Показать задачи” opens the existing catalog; numbers and `0` still work. A free-form reply records intent, without creating a task or authorizing execution. [Release scope](../release-0.3.md).
 
 ## What it does
 

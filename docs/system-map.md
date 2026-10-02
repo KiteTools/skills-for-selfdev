@@ -1,5 +1,7 @@
 # How the skills form a personal system
 
+**Using Claude Code?** [Build your daily assistant: copyable prompt and component map](guides/daily-assistant-claude-code.md).
+
 **English** · [Русский](system-map.ru.md) · [Catalog](catalog.md)
 
 **Start with one useful result. Connect practices when you want to continue.**

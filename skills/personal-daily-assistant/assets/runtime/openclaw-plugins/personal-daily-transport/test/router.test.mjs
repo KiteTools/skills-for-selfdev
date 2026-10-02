@@ -396,3 +396,27 @@ test('explicit Ten and activity commands bypass pending and never request a cont
     assert.equal(Buffer.from(calls[0][2], 'base64').toString('utf8'), text);
   }
 });
+
+test('morning intentions do not authorize agent work through embedded wording', () => {
+  for (const text of [
+    'Хочу, чтобы прототип помог людям учиться',
+    'Сегодня понять, как создать полезный результат?',
+    'Собрать памятку с разделом «Помоги выбрать задачу»',
+    'Показать задачи',
+  ]) {
+    assert.equal(shouldCreateContinuation({route: {
+      kind: 'reply', text, pendingStage: 'awaiting_task_choice', messageId: 'synthetic-intent',
+    }}), false, text);
+  }
+});
+
+test('a direct request remains distinct from recording a morning intention', () => {
+  assert.equal(shouldCreateContinuation({route: {
+    kind: 'reply', text: 'Пожалуйста, помоги сравнить две задачи',
+    pendingStage: 'awaiting_task_choice', messageId: 'synthetic-request',
+  }}), true);
+  assert.equal(selectInboundRoute({
+    content: 'Подготовь план прототипа', messageId: 'synthetic-separate-request',
+    pending: {pending: false},
+  }), null, 'outside the daily interaction ordinary requests stay with the normal agent');
+});

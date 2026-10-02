@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skills-for-selfdev",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Skills for selfdev: standalone reflection and learning practices, personal Codex context, and an optional daily assistant.",
   "author": {
     "name": "KiteTools",
