@@ -32,3 +32,7 @@ jobs:
         run: python3 -m unittest discover -s skills/personal-daily-assistant/assets/runtime/tests -v
       - name: Test daily assistant transport
         run: node --test skills/personal-daily-assistant/assets/runtime/openclaw-plugins/personal-daily-transport/test/*.test.mjs
+      - name: Install audio test dependencies
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Test voice overlays with synthetic audio (no live API)
+        run: node --test skills/embed-breath-voice/tests/*.test.mjs

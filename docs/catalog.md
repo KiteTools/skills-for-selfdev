@@ -2,7 +2,7 @@
 
 [English](catalog.md) · [Русский](catalog.ru.md)
 
-Fourteen focused workflows for reflection, learning, journaling, and working with life events. Choose by the result you want. Each page explains what to provide, what comes back, and which tools it needs.
+Fifteen focused workflows for reflection, learning, journaling, and working with life events. Choose by the result you want. Each page explains what to provide, what comes back, and which tools it needs.
 
 ## First, choose the scope
 
@@ -41,6 +41,8 @@ These are on-demand skills. No computer monitoring, profile storage, or schedule
 The interview skill includes deterministic helpers. Notes and transcript cleanup depend on careful source reading; they do not claim automatic factual correctness.
 
 ## Build a personal rhythm
+
+[Voice in a breathing MP3](skills/embed-breath-voice.md) adds one phrase at your chosen timestamp, from an existing recording or ElevenLabs synthesis. You get a separate MP3; Muse is optional. Requires Node.js and ffmpeg/ffprobe; an API key is needed only for synthesis.
 
 ![Daily rhythm: a practice you can make your own](../assets/rhythm.png)
 

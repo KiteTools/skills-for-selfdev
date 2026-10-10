@@ -41,6 +41,7 @@ For example: reflect on a consultation → keep an accepted understanding → ch
 | Understand the actual day | [Cross-device day review](docs/skills/cross-device-day-review.md) | Union intervals, separate agent time and explicit gaps |
 | Make sense of the week | [Weekly Review](docs/skills/weekly-review.md) | Intentions, experience and results with explicit gaps |
 | Build a gentle daily rhythm | [Personal daily assistant](docs/skills/personal-daily-assistant.md) | An opt-in local Telegram assistant with a private journal and retrospectives |
+| Add my voice phrase to a practice | [Voice in a breathing MP3](docs/skills/embed-breath-voice.md) | A separate MP3 with a timed voice overlay and a quieter background |
 | Put life events in order | [Life events](docs/skills/life-events.md) | A reviewable timeline from manual notes or a transcript |
 | Explore a conditional life model | [Longevity intake](docs/skills/longevity-intake.md) | A structured, consent-aware handoff to the existing Longevity app |
 

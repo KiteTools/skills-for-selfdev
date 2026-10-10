@@ -56,7 +56,7 @@ Skills do not automatically synchronize their files. The person or an authorized
 
 ## What is available now
 
-The collection has 14 skills. Personal Codex Assistant, Evening Ten, Weekly Review and GoR work on demand. Personal Daily Assistant includes a separate local runtime; its [guide](skills/personal-daily-assistant.md) identifies supported scenarios and activation steps. Conversational skills do not automatically become Telegram workflows.
+The collection has 15 skills. Personal Codex Assistant, Evening Ten, Weekly Review and GoR work on demand. Personal Daily Assistant includes a separate local runtime; its [guide](skills/personal-daily-assistant.md) identifies supported scenarios and activation steps. Conversational skills do not automatically become Telegram workflows.
 
 Personal Cabinet and SOOV have separate repositories. This collection does not provide shared login, a common database or automatic synchronization across all apps. Prism remains an external tool.
 
