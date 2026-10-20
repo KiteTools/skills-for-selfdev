@@ -130,6 +130,10 @@ variable to `0`; the next dispatch does not attach the previous manifest.
 Summary refresh uses `PDS_SUMMARIES_DIR` when set. A configured empty directory
 stays empty; it does not fall back to another summary corpus.
 
+## Cursor and agent-time review instructions
+
+Collection 0.3.3 adds Codex/Cursor evidence rules to `operator-rules.md`, copied to the installed workspace's `AGENTS.md`. This does not add a Cursor collector, hook configuration, database reader, runtime importer or new schedule. The existing Codex opt-in above reads transcript content and is not a metadata-only source. Supply reviewed machine summaries separately for agent-led evening/weekly reflection. For an existing installation, review and merge the relevant rule changes with its private instructions; do not overwrite personal context or activate collection implicitly.
+
 ## Required validation
 
 1. JSON and skill validation.

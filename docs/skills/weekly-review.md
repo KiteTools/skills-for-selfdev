@@ -25,6 +25,12 @@ The five-lens approach comes from a personal IMT learning-review workflow. Here 
 
 **Receive:** a readable overview, daily evidence map, source → understanding → application episodes, confidence limits, and one optional next experiment. A visualization can accompany a deep review when the assistant supports it; a table works without extra tools.
 
+## If you use Cursor and Codex
+
+Supply selected machine-time summaries if available. The review separates Codex and Cursor from human activities, deduplicates runs, preserves partial days and incorporates fresh corrections. Missing stays unknown; agent work does not become evidence of your understanding. [Rules and a fictional example](../guides/agent-time-retrospectives.md).
+
+The skill does not install Cursor collectors or automatically read editor history. A diary-only review remains sufficient.
+
 ## Try it
 
 ```text

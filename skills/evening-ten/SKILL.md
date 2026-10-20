@@ -17,6 +17,10 @@ Establish date, timezone, and actual coverage. A six-hour summary describes a wi
 
 If there is no usable evidence and no stated goal, say there is insufficient input; do not invent a day. If input exceeds the available context, say what cannot be covered and obtain or create an authorized complete summary rather than silently dropping its beginning. Never relabel yesterday's list as today's.
 
+## When Cursor or Codex time is supplied
+
+Agent runtime is context about machine work, not a human day thread, proof of understanding or completion. Keep Codex and Cursor values separate from human activity; unknown stays unknown. A partial provider summary gives only a lower bound. Do not add agent minutes to the person's time, infer inactivity from missing Cursor, or recommend more work because machine time is high or low. The same root run repeated in hooks and metadata is counted once; child agents are not additional root time. A last-step duration or conversation age is not the whole run. Ground suggestions in reviewed artifacts and the person's account, not runtime alone. This skill does not install Cursor hooks or collect local session contents.
+
 ## Generate and select
 
 Before generating candidates, consider what possibilities are outside the person’s current role or habitual way of participating. Useful moves may involve a direct experience, learning alongside someone, accepting an existing invitation, making room for rest, or joining an existing activity without creating another tool. Tie every move to supplied evidence or a chosen goal; a new title such as “curator” is not by itself a new experience.

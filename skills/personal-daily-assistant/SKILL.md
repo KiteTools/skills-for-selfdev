@@ -62,6 +62,10 @@ After the morning questions, ask for the owner’s step in their own words. Keep
   or generation is bundled. `interested`, `chosen`, `attempted`, reported outcome
   and self-reported completion remain distinct from tasks and successes.
 
+## Evening and weekly reflection with Cursor
+
+Read the agent-time section of `references/operator-rules.md` when the owner supplies Codex/Cursor duration evidence. Separate provider runtimes, union wall time and human time; preserve missing/partial coverage, deduplicate root runs, and refresh weekly dates only through authorized sources. These are agent-led review instructions, not an automatic Cursor collector or import into the bundled Telegram dialogue. Existing installations need a deliberate review/merge of their private operator rules; do not change live jobs during a skill update.
+
 ## Guardrails
 
 - Keep `events.jsonl`, state, reports and rendered views in the configured

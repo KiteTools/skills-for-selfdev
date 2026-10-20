@@ -10,6 +10,9 @@ You edited a draft, had a conversation, tried something, or left a question unre
 
 This is the portable version of the “Ten” in an evening assistant workflow. It gives you possibilities without turning your evening into another performance review.
 
+
+Supplied Cursor/Codex machine time remains separate from human activity. Suggestions use reviewed results and your experience, not agent runtime alone. [Machine-time guidance](../guides/agent-time-retrospectives.md).
+
 ## What makes a Ten
 
 The assistant maps the supplied day's evidence, drafts twenty candidates, checks recent suggestions, and chooses ten. The selection should span different parts of the day and at least four kinds of move. At least three items explore a fresh direction rather than merely copying things you liked before.

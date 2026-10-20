@@ -14,6 +14,9 @@ This collection gives your AI assistant a repeatable way to work with that mater
 
 **Start small:** bring one transcript or a short account of your day. You do not need to build a personal knowledge system first.
 
+
+[Cursor and Codex in evening and weekly reviews](docs/guides/agent-time-retrospectives.md): keep human and machine time separate and preserve coverage gaps.
+
 ## One practice or a personal system
 
 | Try one practice | Build your personal assistant |

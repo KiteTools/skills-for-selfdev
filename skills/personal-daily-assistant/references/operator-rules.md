@@ -65,6 +65,22 @@ Use date only in the first report line and time-only event rows. Merge duplicate
 episodes. Do not expose technical metadata, raw model logs, activity windows or
 delta distributions.
 
+## Optional agent-time evidence in evening and weekly reflection
+
+Use only selected metadata summaries supplied by the owner or collected with explicit source authorization. This portable runtime does not install Cursor hooks, read its database, or automatically import machine-time summaries. These rules guide an agent-led review; the deterministic journal dialogue is not a new telemetry pipeline.
+
+For the evening, show human activity first. Keep Codex runtime, Cursor runtime and the known combined machine subtotal separate from the person's time. A foreground Cursor window is not an agent interval, and generated work does not prove human review or understanding. Confirm results through selected artifacts, tests or external readback; ask only about gaps that matter after reading available evidence.
+
+For supplied metadata:
+
+- Use completed root request-to-stop intervals; a read-only request-to-final-message fallback is partial. Never treat the last segment's `turnDurationMs` or conversation age as whole-run runtime. Leave incomplete runs untimed.
+- Deduplicate the same run across hooks and fallback; do not add child-agent time inside the root accounting. Sum distinct root runtimes, including parallel runs, and label their union wall time separately when actual bounds are available. Tools and approval waits are included; this is not GPU time or cost.
+- Keep `codex_agent_runtime_min` and `cursor_agent_runtime_min` separate. Unknown Cursor is `н/д`, not zero. Recompute the known combined `agent_runtime_min` once from available providers and mark incomplete coverage. In legacy `agent_time_context` schema 1–3 only, the old combined field means Codex; verify other export contracts rather than guessing.
+- For weekly review, cover each requested local date, including dates with no evening snapshot. Refresh only through an already authorized collector; otherwise report the supplied coverage. Replace stale provider values with the fresh evidence, then recompute totals. Never add fresh Cursor twice or rewrite human/device measurements. Show observed days, partial days and unknown days by provider.
+- Missing data is not inactivity. Partial numeric data is a lower bound. CLI success does not prove GUI hook delivery; Tab, cloud and unobserved CLI activity remain unmeasured.
+
+Do not read or copy conversation text, reasoning, raw tool output, private project names, home paths or credentials just to measure runtime. Use private pseudonymous IDs and timestamps for deduplication. The optional Codex transcript integration below reads content and must not be described as this metadata-only input. Never turn machine minutes into vitality, understanding, a success or a completed task.
+
 ## Ideas and tasks
 
 Save `идея:` immediately. Offer one optional discussion with «обсудить»,

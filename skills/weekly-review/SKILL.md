@@ -17,6 +17,21 @@ Start with existing evidence, not a request that the user reconstruct the entire
 
 Prefer explicit user statements for internal experience and offline events. Apply later corrections to prior interpretations; retain provenance. If a correction and independent evidence still conflict, show the conflict rather than silently choosing. Do not infer awareness, vitality, motivation, spiritual connection, or understanding from app usage.
 
+## Optional Codex and Cursor machine time
+
+Use selected, reviewed metadata summaries only when supplied or explicitly authorized. No collector or hook installer ships with this skill. Keep **human elapsed time**, **agent runtime**, **reviewed output**, and **understanding** separate. Cursor in the foreground is not proof that an agent was running; an agent running is not proof the person was reading or learning.
+
+For each date, preserve separate `codex_agent_runtime_min` and `cursor_agent_runtime_min`, source/coverage status, and the known combined `agent_runtime_min`. Missing means unknown, not zero. A known subtotal with a missing provider is incomplete. Sum provider values once; do not add a provider to a total that already includes it. For supplied legacy `agent_time_context` snapshots with schema 1–3, `agent_runtime_min` means Codex only; this convention does not apply to arbitrary third-party exports without checking their schema.
+
+- Prefer matched, completed root request-to-stop hook intervals. Deduplicate repeats and the same run observed by both hooks and a metadata fallback. Exclude child/subagent runs from the root total; distinct parallel root runs can overlap and still contribute to summed runtime.
+- If only an explicitly authorized read-only Cursor metadata summary is available, label it partial. Use evidenced request-to-final-message bounds plus a completion marker. `turnDurationMs` may describe only the final work segment; never substitute it for the full run or use the age of a conversation. Missing start/end or completion leaves that run untimed.
+- Runtime includes tool and approval waits within the measured interval; it is not GPU time, cost, human effort, or a productivity score. Distinguish sum of root-run durations from their union wall time. Clip intervals to the user's local dates before aggregation, respecting timezone offsets and daylight saving changes.
+- Before weekly aggregation, refresh every date, including days without an evening snapshot, **only if an authorized collector is available**. Otherwise use the supplied summary and disclose its age/coverage. Replace that day's provider value when incorporating a fresher summary; recalculate the combined subtotal without rewriting human observations. Never fill unavailable days with zeros.
+- Show coverage by provider: days with numeric observations / days requested, partial days, and unavailable days. Preserve valid observed zeros with their coverage. A partial numeric estimate is an observed lower bound, not a complete total. Unknown providers stay visible even when other providers have usable numbers.
+- Configured hooks or a CLI smoke test do not establish that the editor delivered events. A metadata fallback does not establish full historical coverage. Tab completion, cloud agents and CLI runs without confirmed collection remain outside the measurement.
+
+Keep run identifiers pseudonymous and stable for deduplication. Do not request or copy prompts, responses, reasoning, tool output, credentials, personal project names or absolute home paths to calculate duration. Pseudonymous metadata can still be sensitive and stays private. Do not repurpose a transcript-content collector as a metadata-only collector.
+
 ## Build the week
 
 1. Create a compact evidence ledger: date/window, source ID, episode, what it supports, duration basis, and unresolved gaps. Label facts, self-reports, interpretations, and proposals separately. Give supplied records stable local IDs if they lack them; those IDs do not create external verification.
@@ -44,7 +59,8 @@ Start with a brief human account of the week: the strongest supported connection
 - a daily five-lens table (or the user's chosen lenses), source references, and coverage;
 - source → understanding → application for the meaningful episodes;
 - observed results and open decisions, keeping people-facing live/support work separate;
-- time estimates or counts with overlap handling, and comparison to supplied targets only;
+- human time estimates or counts with overlap handling, and comparison to supplied targets only;
+- when supplied, a separate Codex/Cursor machine-time row with known subtotal, union wall time only if evidenced, and coverage by day;
 - recurring helpful patterns and distractions, including counterexamples;
 - confidence limits: supported, approximate, self-reported, and unknown;
 - **one small proposed experiment** grounded in this week, with a way to observe the outcome.

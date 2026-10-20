@@ -12,6 +12,13 @@ Choose a meaningful next step in the morning, capture ideas and small successes 
 
 > Use personal-daily-assistant to inspect my setup and prepare a private installation plan. Use my chosen direction, focus, and daily questions. Show the dry run before activating schedules. Explain the optional Evening Ten bridge.
 
+## Evening and weekly review with Cursor
+
+With supplied reviewed summaries, the agent can show Codex/Cursor machine time, coverage days and gaps separately. Human time, review of results and understanding remain separate observations. [Rules and worked example](../guides/agent-time-retrospectives.md).
+
+Collection 0.3.3 updates operator instructions. No automatic Cursor collector or Telegram machine-summary import is included; the bundled runtime remains version 0.3.0. An existing installation does not update itself: compare the new rules with its private settings first.
+
+
 ## Update 0.3.0: choose a morning step in your own words
 
 After the morning questions, enter your own next step. “Показать задачи” opens the existing catalog; numbers and `0` still work. A free-form reply records intent, without creating a task or authorizing execution. [Release scope](../release-0.3.md).
