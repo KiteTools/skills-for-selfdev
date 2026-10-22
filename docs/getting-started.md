@@ -4,6 +4,8 @@
 
 [English](getting-started.md) · [Русский](getting-started.ru.md)
 
+**Complete setup:** the [unified INSTALL](../INSTALL.md) covers three routes: on-demand practices, the Telegram assistant, and activity sources. This page retains additional per-skill requirements and packaging options.
+
 Pick a skill from the [catalog](catalog.md). Read its input, output, and requirements before bringing personal material.
 
 ## If you want a personal assistant

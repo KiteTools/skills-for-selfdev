@@ -4,7 +4,7 @@
 
 **AI skills for self-development. Turn experience into understanding, and understanding into a next step you choose.**
 
-[Русский](README.ru.md) · [Start here](docs/getting-started.md) · [All skills](docs/catalog.md) · [Privacy](PRIVACY.md)
+[Русский](README.ru.md) · [Install](INSTALL.md) · [All skills](docs/catalog.md) · [Privacy](PRIVACY.md)
 
 ![Skills for Selfdev: a field guide for noticing, understanding, trying and reviewing](assets/hero.png)
 
@@ -14,6 +14,15 @@ This collection gives your AI assistant a repeatable way to work with that mater
 
 **Start small:** bring one transcript or a short account of your day. You do not need to build a personal knowledge system first.
 
+## Choose an installation route
+
+| You want to… | Start here |
+| --- | --- |
+| Use practices on demand in Codex, Claude Code, or another agent | [Install selected skills and verify a first run](INSTALL.md#on-demand) |
+| Receive morning and evening messages in Telegram | [Prepare your daily assistant and verify delivery](INSTALL.md#telegram) |
+| Add daily evidence and agent time to your reviews | [Try a summary and connect selected sources](INSTALL.md#activity) |
+
+The [unified INSTALL guide](INSTALL.md) covers requirements, commands, success checks, updates, and disabling each route. The routes are independent: Telegram and computer history are optional. A Cursor collector and automatic import of its runtime into Telegram are not bundled.
 
 [Cursor and Codex in evening and weekly reviews](docs/guides/agent-time-retrospectives.md): keep human and machine time separate and preserve coverage gaps.
 
@@ -50,7 +59,7 @@ For example: reflect on a consultation → keep an accepted understanding → ch
 
 ## Try one skill
 
-Clone the repository, then copy only the skill you want into your agent's skill directory:
+You need Git and Python 3.10+. Clone the repository, then copy only the skill you want into your agent's skill directory:
 
 ```sh
 git clone https://github.com/KiteTools/skills-for-selfdev.git
@@ -67,7 +76,7 @@ Use $learning-notes with this transcript. Keep the speaker's examples,
 mark unclear passages, and write the result in my language.
 ```
 
-For another agent, use its supported skill location or give it the selected `SKILL.md`. Tool-dependent steps still require the tools named by that skill. [Installation options and requirements →](docs/getting-started.md)
+For Claude Code, select your project's skill directory with `--dest`: [command and first trial](INSTALL.md#on-demand). For another agent, use its supported skill location or give it the selected `SKILL.md` and its referenced files. Tool-dependent steps still require the tools named by that skill. [Installation routes and requirements →](INSTALL.md)
 
 ## From an episode to a next step
 
@@ -79,7 +88,8 @@ The workflows grew out of personal learning and IMT practice. Method-specific id
 
 ## What is included—and what connects separately
 
-- **Portable workflows:** eleven skills run from supplied material with an AI assistant and the tools each task needs. The expert-analysis workflow includes Python helpers; SVG and image outputs need a rendering tool.
+- **Portable workflows:** reflection and learning skills work from supplied material with an AI assistant and the tools each task needs. The expert-analysis workflow includes Python helpers; SVG and image outputs need a rendering tool.
+- **Activity review:** an offline CLI processes normalized JSON, with separate human and machine time. Export, normalization, and collectors are configured separately.
 - **A local runtime:** Personal Daily Assistant includes an installable OpenClaw/Telegram package. Its bundled snapshot is documented; account setup and live verification happen on your own machine.
 - **An external app workflow:** Longevity Intake connects to [Longevity](https://github.com/KiteTools/longevity-webmcp); the application is maintained in its own repository.
 - **Separate applications:** [Building Your Life Function](https://github.com/KiteTools/soov) provides a local life-event timeline; [Personal Cabinet](https://github.com/KiteTools/selfdev-cabinet) provides application source and setup for your own accounts. Their [integration guides](docs/integrations/lk-sendpulse.md) explain the dependencies; hosted services are not bundled here.
@@ -96,8 +106,8 @@ Your chosen AI provider and connected services still have their own data policie
 
 ## About this release
 
-**Version 0.2.0 — connected practices and a personal assistant.** Instructions and bundled helpers are available now. Tests check the invariants they can check; they do not certify every model, operating system, or live integration. [Validation and limits](docs/validation.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+**Collection 0.3.3; bundled Telegram assistant runtime 0.3.0.** Release 0.3.3 adds review rules for Codex/Cursor machine time; it does not automatically update a running assistant. [Requirements and verification boundaries](INSTALL.md) · [Validation history](docs/validation.md) · [GitHub Actions](https://github.com/KiteTools/skills-for-selfdev/actions) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 Built by [KiteTools](https://github.com/KiteTools). Explore the wider collection of [IMT tools and artifacts](https://app.imt.dev/artifacts/).
 
-[What changed and how to update](docs/release-0.2.md)
+[Update each installation route](INSTALL.md) · [Assistant foundation changes in 0.3.0](docs/release-0.3.md) · [0.2.0 history](docs/release-0.2.md)
